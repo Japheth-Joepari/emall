@@ -28,16 +28,16 @@ export default function Banner() {
                 <div className="thumb">
                   <ul id="images">
                     <li>
-                      <img src={author1} alt="Author" />
+                      <img src={author1} alt={true} />
                     </li>
                     <li>
-                      <img src={author2} alt="Author" />
+                      <img src={author2} alt={true} />
                     </li>
                     <li>
-                      <img src={author3} alt="Author" />
+                      <img src={author3} alt={true} />
                     </li>
                     <li>
-                      <img src={author4} alt="Author" />
+                      <img src={author4} alt={true} />
                     </li>
                   </ul>
                 </div>
@@ -58,7 +58,7 @@ export default function Banner() {
             </div>
           </div>
           <div className="col-md-6 my-4 my-md-0 text-center">
-            <img src={BannerImage} className="img-fluid" alt="..." />
+            <img src={BannerImage} className="img-fluid" alt={true} />
 
             <div className="price-tag">
               <span className="">

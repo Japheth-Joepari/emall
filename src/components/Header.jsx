@@ -5,7 +5,7 @@ export default function Nav() {
     <nav className="navbar navb navbar-expand-md  sticky-top">
       <div className="container py-2 my-2 nv shadow-lg rounded bg-white">
         <div className="navbar-brand h-25">
-          <img src={logo} alt className="logoIm" />
+          <img src={logo} alt={true} className="logoIm" />
         </div>
         <button
           className="navbar-toggler"
