@@ -741,3 +741,15 @@ p {
 .banerbg {
   background: #f9f3f0;
 }
+
+.logoBrand h4 {
+  /* position: relative; */
+  margin-top: 18px;
+  font-weight: 600;
+  color: #002644;
+}
+
+.navb {
+  position: relative;
+  bottom: 0.9rem;
+}

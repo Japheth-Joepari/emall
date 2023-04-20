@@ -2,10 +2,13 @@ import logo from "../assets/images/logos.jpg";
 
 export default function Nav() {
   return (
-    <nav className="navbar navb navbar-expand-md  sticky-top">
-      <div className="container py-2 my-2 nv shadow-lg rounded bg-white">
-        <div className="navbar-brand h-25">
+    <nav className="navbar  navbar-expand-md  sticky-top">
+      <div className="container-fluid navb py-2 my-2 nv shadow-sm rounded bg-white">
+        <div className="navbar-brand h-25 d-flex logoBrand">
           <img src={logo} alt={true} className="logoIm" />
+          <h4>
+            <b>emall</b>
+          </h4>
         </div>
         <button
           className="navbar-toggler"
