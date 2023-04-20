@@ -1,15 +1,16 @@
 import logo from "../assets/images/logos.jpg";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
     <nav className="navbar  navbar-expand-md  sticky-top">
       <div className="container-fluid navb py-2 my-2 nv shadow-sm rounded bg-white">
-        <div className="navbar-brand h-25 d-flex logoBrand">
+        <Link to="/" className="navbar-brand h-25 d-flex logoBrand">
           <img src={logo} alt={true} className="logoIm" />
           <h4>
             <b>emall</b>
           </h4>
-        </div>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -27,24 +28,24 @@ export default function Nav() {
         >
           <ul className="navbar-nav mb-2 mb-lg-0 mx-auto gap-4">
             <li className="nav-item">
-              <a className="nav-link active" href="#">
+              <Link className="nav-link active" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/products">
                 Products
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/contact">
                 Contact Us
-              </a>
+              </Link>
             </li>
             <li className="nav-item d-lg-none d-md-none d-sm-block">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/profile">
                 Account setting
-              </a>
+              </Link>
             </li>
             <li className="nav-item d-lg-none d-md-none d-sm-block">
               <a className="nav-link" href="#">
@@ -58,9 +59,9 @@ export default function Nav() {
             </li>
           </ul>
           <div className="navbar-nav m-2 gap-4 d-none d-md-flex">
-            <a href="#">
+            <Link to="/products">
               <i className="fa fa-search" />
-            </a>
+            </Link>
             <a href="#">
               <i className="fa-regular fa-heart red" />
             </a>
@@ -72,9 +73,9 @@ export default function Nav() {
                 </span>
               </i>
             </a>
-            <a href="#">
+            <Link to="/profile">
               <i className="fa-regular fa-user" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,7 +1,15 @@
+import EditProfile from "../components/EditProfile";
+import Footer from "../components/Footer";
+import Nav from "../components/Header";
+
 export default function Profile() {
   return (
     <>
-      <H1>Profile</H1>
+      <Nav />
+      <EditProfile />
+      <div className="fixe">
+        <Footer />
+      </div>
     </>
   );
 }

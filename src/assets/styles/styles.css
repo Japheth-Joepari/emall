@@ -753,3 +753,13 @@ p {
   position: relative;
   bottom: 0.9rem;
 }
+
+.fixe {
+  position: relative;
+  top: 6rem;
+}
+
+.fixe2 {
+  position: relative;
+  top: 3.3rem;
+}
