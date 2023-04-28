@@ -23,11 +23,11 @@ export default function Cart() {
               // console.log();
               return (
                 <div className="card border-0" key={item.id}>
-                  <div className="row g-0">
+                  <div className="row g-1">
                     <div className="col-lg-2 col-md-2 col-3 ">
                       <button className="btn-btn btTop">x</button>
                       <img
-                        src="./assets/images/gamepag.png"
+                        src={item.image}
                         className="img-fluid rounded-start"
                         alt="..."
                       />
