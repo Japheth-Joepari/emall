@@ -21,7 +21,7 @@ export default function Categories() {
           >
             <div className="card d-flex flex-column border-0 shadow-sm">
               <div className="p-2 mt-4">
-                <img src={category.image} alt={true} />
+                <img src={category.image} alt="loading" />
                 <p className="text-dark text-center">{category.title}</p>
               </div>
             </div>

@@ -16,13 +16,20 @@ export default function ProductListngs() {
       </h4>
       <div className="row justify-content-start d-flex">
         {state.data.map((product) => (
-          <div className="col-xl-3 col-lg-4 py-3 col-sm-6 col-12 mb--30">
+          <div
+            className="col-xl-3 col-lg-4 py-3 col-sm-6 col-12 mb--30"
+            key={product.id}
+          >
             <div
               className="card border-0 text-decoration-none text-black"
               key={product.id}
             >
               <div className="w-100 prodBg">
-                <img src={product.image} alt={true} className="w-100 prodBg" />
+                <img
+                  src={product.image}
+                  alt="loading"
+                  className="w-100 prodBg"
+                />
               </div>
               <div className="card-body py-2 bg-white">
                 <div className="product-rating py-2">

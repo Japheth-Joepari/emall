@@ -6,7 +6,7 @@ export default function NavBar() {
     <nav className="navbar  navbar-expand-md  flxed-top">
       <div className="container-fluid navb py-2 my-2 nv shadow-sm rounded bg-white">
         <Link to="/" className="navbar-brand h-25 d-flex logoBrand">
-          <img src={logo} alt={true} className="logoIm" />
+          <img src={logo} alt="loading" className="logoIm" />
           <h4>
             <b>emall</b>
           </h4>

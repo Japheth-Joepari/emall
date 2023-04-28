@@ -21,7 +21,11 @@ export default function Product() {
               key={product.id}
             >
               <div className="w-100 prodBg">
-                <img src={product.image} alt={true} className="w-100 prodBg" />
+                <img
+                  src={product.image}
+                  alt="loading"
+                  className="w-100 prodBg"
+                />
               </div>
               <div className="card-body py-2 bg-white">
                 <div className="product-rating py-2">

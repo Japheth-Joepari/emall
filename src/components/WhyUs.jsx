@@ -20,7 +20,7 @@ export default function WhyUs() {
         <div className="col">
           <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
-              <img src={fastDelivery} alt={true} />
+              <img src={fastDelivery} alt="loading" />
             </div>
             <b className="title">Fast &amp; Secure Delivery</b>
           </div>
@@ -28,7 +28,7 @@ export default function WhyUs() {
         <div className="col">
           <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
-              <img src={Guranteed} alt={true} />
+              <img src={Guranteed} alt="loading" />
             </div>
             <b className="title">100% Guarantee On Product</b>
           </div>
@@ -36,7 +36,7 @@ export default function WhyUs() {
         <div className="col">
           <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
-              <img src={ret} alt={true} />
+              <img src={ret} alt="loading" />
             </div>
             <b className="title">24 Hour Return Policy</b>
           </div>
@@ -44,7 +44,7 @@ export default function WhyUs() {
         <div className="col">
           <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
-              <img src={fastDelivery} alt={true} />
+              <img src={fastDelivery} alt="loading" />
             </div>
             <b className="title">24 Hour Return Policy</b>
           </div>
@@ -52,7 +52,7 @@ export default function WhyUs() {
         <div className="col">
           <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
-              <img src={call} alt={true} />
+              <img src={call} alt="loading" />
             </div>
             <b className="title">Next Level Pro Quality</b>
           </div>

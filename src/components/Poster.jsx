@@ -40,7 +40,7 @@ export default function Poster() {
         </div>
 
         <div className="p-2">
-          <img src={PosterImage} alt={true} className="img-fluid" />
+          <img src={PosterImage} alt="loading" className="img-fluid" />
         </div>
       </div>
     </div>

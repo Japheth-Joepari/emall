@@ -12,7 +12,7 @@ export default function Nav() {
     <nav className="navbar  navbar-expand-md  sticky-top">
       <div className="container-fluid navb py-2 my-2 nv shadow-sm rounded bg-white">
         <Link to="/" className="navbar-brand h-25 d-flex logoBrand">
-          <img src={logo} alt={true} className="logoIm" />
+          <img src={logo} alt="logo" className="logoIm" />
           <h4>
             <b>emall</b>
           </h4>

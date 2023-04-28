@@ -32,13 +32,13 @@ justify-content-md-center justify-content-sm-center flex-sm-column flex-column t
         </div>
         <ul className="d-flex list-unstyled gap-1">
           <li>
-            <img src={paypal} alt />
+            <img src={paypal} alt="" />
           </li>
           <li>
-            <img src={visa} alt />
+            <img src={visa} alt="" />
           </li>
           <li>
-            <img src={master} alt />
+            <img src={master} alt="" />
           </li>
         </ul>
       </div>

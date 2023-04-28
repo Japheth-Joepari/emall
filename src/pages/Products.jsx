@@ -12,7 +12,7 @@ export default function Products() {
           <div className="container h-25">
             <span>
               Home{" "}
-              <a href className="text-decoration-none text-success">
+              <a href="#" className="text-decoration-none text-success">
                 {" "}
                 | Products
               </a>
