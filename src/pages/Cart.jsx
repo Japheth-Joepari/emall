@@ -22,7 +22,7 @@ export default function Cart() {
             {state.cart.map((item) => {
               // console.log();
               return (
-                <div className="card border-0">
+                <div className="card border-0" key={item.id}>
                   <div className="row g-0">
                     <div className="col-lg-2 col-md-2 col-3 ">
                       <button className="btn-btn btTop">x</button>

@@ -1,13 +1,10 @@
 import Footer from "../components/Footer";
 import Nav from "../components/Header";
-import { CartProvider } from "../context/CartContext";
 
 export default function ContactUs() {
   return (
     <div className="">
-      <CartProvider>
-        <Nav />
-      </CartProvider>
+      <Nav />
 
       <section className="container py-3 my-2">
         {/*Contact heading*/}

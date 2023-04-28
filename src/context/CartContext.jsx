@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import Nav from "../components/Header";
 import { products } from "../utils/products";
 
 export const CartContext = createContext();

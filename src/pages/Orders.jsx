@@ -1,13 +1,11 @@
 import Nav from "../components/Header";
 import Footer from "../components/Footer";
-import { CartProvider } from "../context/CartContext";
 
 export default function Orders() {
   return (
     <div className="bgge">
-      <CartProvider>
-        <Nav />
-      </CartProvider>
+      <Nav />
+
       <div className="container">
         <article className="card border-0 shadow">
           <header className="card-header border-0">

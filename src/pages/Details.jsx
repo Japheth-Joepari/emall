@@ -5,13 +5,10 @@ import p3 from "../assets/images/product-39.png";
 import Footer from "../components/Footer";
 import Nav from "../components/Header";
 import Review from "../components/Review";
-import { CartProvider } from "../context/CartContext";
 export default function Detail() {
   return (
     <div className="bggg">
-      <CartProvider>
-        <Nav />
-      </CartProvider>
+      <Nav />
       <div className="container ">
         <div className="row py-6   border-0 shadow-none  ">
           <div className="col-lg-6 col-sm-10">
