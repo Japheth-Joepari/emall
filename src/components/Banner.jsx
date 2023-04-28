@@ -3,6 +3,7 @@ import author1 from "../assets/images/author1.png";
 import author2 from "../assets/images/author2.png";
 import author3 from "../assets/images/author3.png";
 import author4 from "../assets/images/author4.png";
+import { Link } from "react-router-dom";
 
 export default function Banner() {
   return (
@@ -17,12 +18,13 @@ export default function Banner() {
             <h1 className="bannerh1">Headphones</h1>
             <div id="cont1">
               <div className="bannerBtn">
-                <button
+                <Link
                   className="btn btn-primary shadow-lg btn-lg"
                   id="shoppingBtn"
+                  to={"/detail"}
                 >
                   <i className="fa fa-shopping-basket"></i> Shop now
-                </button>
+                </Link>
               </div>
               <div className="item-rating ms-3 my-3">
                 <div className="thumb">

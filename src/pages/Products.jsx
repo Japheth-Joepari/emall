@@ -1,9 +1,8 @@
 import Footer from "../components/Footer";
 import Nav from "../components/Header";
 import NewsLetter from "../components/Newsletter";
-import Product from "../components/Product";
+import ProductListngs from "../components/ProductListings";
 import Sort from "../components/Sort";
-
 export default function Products() {
   return (
     <div>
@@ -27,7 +26,7 @@ export default function Products() {
           </div>
         </div>
         <Sort />
-        <Product />
+        <ProductListngs />
       </div>
       <NewsLetter />
       <Footer />

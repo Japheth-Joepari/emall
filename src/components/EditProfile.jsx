@@ -13,9 +13,9 @@ export default function EditProfile() {
                       alt="Maxwell Admin"
                     />
                   </div>
-                  <button className="btn btn-primary ">
+                  <a href="/orders" className="btn btn-primary ">
                     <i className="fab fa-amazon-pay"> </i> (4) Orders in que
-                  </button>
+                  </a>
                   <h5 className="user-name">Yuki Hayashi</h5>
                   <h6 className="user-email">yuki@Maxwell.com</h6>
                 </div>

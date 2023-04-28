@@ -18,7 +18,7 @@ export default function WhyUs() {
       </div>
       <div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20 mt-4">
         <div className="col">
-          <div className="card border-0 justify-content-center align-items-center text-center py-3 my-3">
+          <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
               <img src={fastDelivery} alt={true} />
             </div>
@@ -26,7 +26,7 @@ export default function WhyUs() {
           </div>
         </div>
         <div className="col">
-          <div className="card border-0 justify-content-center align-items-center text-center py-3 my-3">
+          <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
               <img src={Guranteed} alt={true} />
             </div>
@@ -34,7 +34,7 @@ export default function WhyUs() {
           </div>
         </div>
         <div className="col">
-          <div className="card border-0 justify-content-center align-items-center text-center py-3 my-3">
+          <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
               <img src={ret} alt={true} />
             </div>
@@ -42,7 +42,7 @@ export default function WhyUs() {
           </div>
         </div>
         <div className="col">
-          <div className="card border-0 justify-content-center align-items-center text-center py-3 my-3">
+          <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
               <img src={fastDelivery} alt={true} />
             </div>
@@ -50,7 +50,7 @@ export default function WhyUs() {
           </div>
         </div>
         <div className="col">
-          <div className="card border-0 justify-content-center align-items-center text-center py-3 my-3">
+          <div className="card border-0 shadow-sm bd justify-content-center align-items-center text-center py-3 my-3">
             <div className="icon">
               <img src={call} alt={true} />
             </div>

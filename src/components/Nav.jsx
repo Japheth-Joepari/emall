@@ -1,15 +1,9 @@
-import logo from "../assets/images/logos.jpg";
-import Cart from "../pages/Cart";
-import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import logo from "../assets/images/logos.jpg";
 
-export default function Nav() {
-  const { toggleCart, isOpen, cartItemCount } = useContext(CartContext);
-
-  console.log(cartItemCount);
+export default function NavBar() {
   return (
-    <nav className="navbar  navbar-expand-md  sticky-top">
+    <nav className="navbar  navbar-expand-md  flxed-top">
       <div className="container-fluid navb py-2 my-2 nv shadow-sm rounded bg-white">
         <Link to="/" className="navbar-brand h-25 d-flex logoBrand">
           <img src={logo} alt={true} className="logoIm" />
@@ -59,9 +53,9 @@ export default function Nav() {
               </a>
             </li>
             <li className="nav-item d-lg-none d-md-none d-sm-block">
-              <button className="nav-link " href="#">
+              <a className="nav-link " href="#">
                 Cart
-              </button>
+              </a>
             </li>
           </ul>
           <div className="navbar-nav m-2 gap-4 d-none d-md-flex">
@@ -72,12 +66,9 @@ export default function Nav() {
               <i className="fa-regular fa-heart red" />
             </a>
             <a href="#">
-              <i
-                className="fa fa-shopping-cart position-relative"
-                onClick={toggleCart}
-              >
+              <i className="fa fa-shopping-cart position-relative">
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {cartItemCount > 0 ? cartItemCount : 0}
+                  5{/* Replace this with the number of items in the cart */}
                   <span className="visually-hidden">items in cart</span>
                 </span>
               </i>
@@ -88,7 +79,6 @@ export default function Nav() {
           </div>
         </div>
       </div>
-      {isOpen ? <Cart /> : ""}
     </nav>
   );
 }

@@ -65,8 +65,8 @@ body {
 }
 
 .bannerh1 {
-  font-weight: 800;
-  font-size: 4rem;
+  font-weight: 900;
+  font-size: 3.4rem;
 }
 
 .h100 {
@@ -226,12 +226,13 @@ body {
 .banner-container {
   /* height: 30b;
    */
-  background: #f9f3f0;
+  /* background: #fff9f6; */
   height: 410px;
+  /* border-bottom: 3px solid rgb(247, 237, 237); */
 }
 
 .bannerbg {
-  background: #f9f3f0;
+  /* background: #f9f3f0; */
 }
 
 .white {
@@ -334,7 +335,6 @@ body {
   .banner-container {
     /* height: 30b;
    */
-    background: #f9f3f0;
     height: 300px;
   }
 
@@ -388,7 +388,6 @@ body {
   .banner-container {
     /* height: 30b;
    */
-    background: #f9f3f0;
     height: 780px;
   }
   #bannerpricing {
@@ -462,7 +461,6 @@ body {
   .banner-container {
     /* height: 30b;
    */
-    background: #f9f3f0;
     height: 340px;
   }
 
@@ -505,7 +503,7 @@ body {
   .banner-container {
     /* height: 30b;
    */
-    background: #f9f3f0;
+    /* background: #f9f3f0; */
     height: 350px;
   }
 }
@@ -739,7 +737,8 @@ p {
   object-fit: contain;
 }
 .banerbg {
-  background: #f9f3f0;
+  background: #fff5f1;
+  border-bottom: 1px solid;
 }
 
 .logoBrand h4 {
@@ -762,4 +761,101 @@ p {
 .fixe2 {
   position: relative;
   top: 3.3rem;
+}
+
+/* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+.rating-group {
+  display: inline-flex;
+}
+
+/* make hover effect work properly in IE */
+.rating__icon {
+  pointer-events: none;
+}
+
+/* hide radio inputs */
+.rating__input {
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* set icon padding and size */
+.rating__label {
+  cursor: pointer;
+  padding: 0 0.1em;
+  font-size: 2rem;
+}
+
+/* set default star color */
+.rating__icon--star {
+  color: orange;
+}
+
+/* set color of none icon when unchecked */
+.rating__icon--none {
+  color: rgb(183, 183, 183);
+}
+
+/* if none icon is checked, make it red */
+.rating__input--none:checked + .rating__label .rating__icon--none {
+  color: red;
+}
+
+/* if any input is checked, make its following siblings grey */
+.rating__input:checked ~ .rating__label .rating__icon--star {
+  color: rgb(199, 199, 199);
+}
+
+/* make all stars orange on rating group hover */
+.rating-group:hover .rating__label .rating__icon--star {
+  color: orange;
+}
+
+/* make hovered input's following siblings grey on hover */
+.rating__input:hover ~ .rating__label .rating__icon--star {
+  color: rgb(177, 177, 177);
+}
+
+/* make none icon grey on rating group hover */
+.rating-group:hover
+  .rating__input--none:not(:hover)
+  + .rating__label
+  .rating__icon--none {
+  color: #eee;
+}
+
+/* make none icon red on hover */
+.rating__input--none:hover + .rating__label .rating__icon--none {
+  color: red;
+}
+
+hr {
+  color: red;
+}
+
+.igg {
+  height: 4rem;
+  border-radius: 5px;
+  background-color: rgb(251, 251, 251);
+  width: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.bd {
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.bggg {
+  background: rgb(255, 253, 253);
+}
+
+.bgge {
+  background: rgb(253, 250, 250);
 }

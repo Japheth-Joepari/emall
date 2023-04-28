@@ -19,7 +19,7 @@ export default function Categories() {
             href="/"
             className="text-center cursor-pointer text-decoration-none custom-col col-6 col-sm-6 col-xm-6 col-md-4 col-lg-2 py-2 my-2"
           >
-            <div className="card d-flex flex-column border-0">
+            <div className="card d-flex flex-column border-0 shadow-sm">
               <div className="p-2 mt-4">
                 <img src={category.image} alt={true} />
                 <p className="text-dark text-center">{category.title}</p>
