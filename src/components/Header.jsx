@@ -1,11 +1,14 @@
 import logo from "../assets/images/logos.jpg";
 import Cart from "../pages/Cart";
 import { CartContext } from "../context/CartContext";
+import { SavedContext } from "../context/SavedItemsContext";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import Saved from "../pages/Saved";
 
 export default function Nav() {
   const { toggleCart, isOpen, cartItemCount } = useContext(CartContext);
+  const { isCartOpen } = useContext(SavedContext);
 
   console.log(cartItemCount);
   return (
@@ -89,6 +92,7 @@ export default function Nav() {
         </div>
       </div>
       {isOpen ? <Cart /> : ""}
+      {isCartOpen ? <Saved /> : ""}
     </nav>
   );
 }
