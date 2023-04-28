@@ -2,8 +2,13 @@ import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 
 export default function Cart() {
-  const { toggleCart, state } = useContext(CartContext);
-  console.log(state.cart);
+  const {
+    toggleCart,
+    cartItems,
+    removeFromCart,
+    decreaseCount,
+    increaseCount,
+  } = useContext(CartContext);
   return (
     <div>
       <div className="row cartContainer shadow-lg scrollable bg-white">
@@ -19,13 +24,18 @@ export default function Cart() {
           </div>
           <hr />
           <div className="d-flex flex-column justify-content-between gap-2 ">
-            {state.cart.map((item) => {
+            {cartItems.map((item) => {
               // console.log();
               return (
                 <div className="card border-0" key={item.id}>
                   <div className="row g-1">
                     <div className="col-lg-2 col-md-2 col-3 ">
-                      <button className="btn-btn btTop">x</button>
+                      <button
+                        className="btn-btn btTop"
+                        onClick={() => removeFromCart(item.id)}
+                      >
+                        x
+                      </button>
                       <img
                         src={item.image}
                         className="img-fluid rounded-start"
@@ -44,7 +54,13 @@ export default function Cart() {
                             <i className="fas fa-star" />
                             <i className="fas fa-star" />
                             <i className="fal fa-star" />
-                            <b className="text-black">({item.rating})</b>{" "}
+                            <b className="text-black">
+                              (
+                              {item.count > 1
+                                ? `${item.count} copies`
+                                : `${item.count} copy`}
+                              )
+                            </b>{" "}
                             {/* insert item rating here */}
                           </span>
                           <p>{item.description}</p>{" "}
@@ -55,10 +71,20 @@ export default function Cart() {
                       <div className="col-1">
                         <div className="card-body">
                           <div className="d-flex flex-row justify-content-start gap-2 mtt">
-                            <button className="btn-btn">+</button>
+                            <button
+                              className="btn-btn"
+                              onClick={() => increaseCount(item.id)}
+                            >
+                              +
+                            </button>
                             <b>{item.quantity}</b>{" "}
                             {/* insert item quantity here */}
-                            <button className="btn-btn">-</button>
+                            <button
+                              className="btn-btn"
+                              onClick={() => decreaseCount(item.id)}
+                            >
+                              -
+                            </button>
                           </div>
                         </div>
                       </div>

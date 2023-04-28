@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 export default function ProductListngs() {
-  const { addToCart, state } = useContext(CartContext);
+  const { addToCart, products } = useContext(CartContext);
 
   return (
     <div className="container productContainer container-xm marginTop2Rem">
@@ -15,7 +15,7 @@ export default function ProductListngs() {
         <b>Explore Our products</b>
       </h4>
       <div className="row justify-content-start d-flex">
-        {state.data.map((product) => (
+        {products.map((product) => (
           <div
             className="col-xl-3 col-lg-4 py-3 col-sm-6 col-12 mb--30"
             key={product.id}
