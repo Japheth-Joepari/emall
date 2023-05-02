@@ -11,7 +11,7 @@ export const products = [
   {
     id: 1,
     ratings: 122,
-    categories: "accessories",
+    category: "accessories",
     title: "Yantiti Leather & Canvas Bags",
     image: yanti,
     stars: 5,
@@ -22,7 +22,7 @@ export const products = [
   {
     id: 2,
     ratings: 21,
-    categories: "accessories",
+    category: "accessories",
     title: "Gamming G keyboard",
     image: keyboard,
     stars: 5,
@@ -33,7 +33,7 @@ export const products = [
   {
     id: 3,
     ratings: 766,
-    categories: "accessories",
+    category: "accessories",
     title: "Dream Head Pro",
     image: headphones,
     stars: 3.5,
@@ -44,7 +44,7 @@ export const products = [
   {
     id: 4,
     ratings: 40,
-    categories: "accessories",
+    category: "accessories",
     title: "Reel Beats Amapiano",
     image: beatsSpeaker,
     stars: 5,
@@ -55,7 +55,7 @@ export const products = [
   {
     id: 5,
     ratings: 27,
-    categories: "accessories",
+    category: "accessories",
     title: "Logitech X Pro mouse",
     image: mouse,
     stars: 4,
@@ -66,7 +66,7 @@ export const products = [
   {
     id: 6,
     ratings: 22,
-    categories: "accessories",
+    category: "accessories",
     title: "Logitech wide Cam",
     image: webcam,
     stars: 3,
@@ -77,7 +77,7 @@ export const products = [
   {
     id: 7,
     ratings: 90,
-    categories: "laptop",
+    category: "laptops",
     title: "Macbook Pro 2022",
     image: macbook,
     stars: 5,
@@ -88,7 +88,7 @@ export const products = [
   {
     id: 8,
     ratings: 80,
-    categories: "accessories",
+    category: "accessories",
     title: "Amapiano ++",
     image: amapiano,
     stars: 5,

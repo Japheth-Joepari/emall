@@ -2,8 +2,14 @@ import { SortContext } from "../context/Sort";
 import { useContext } from "react";
 
 export default function Sort() {
-  const { searchText, updateSearchText, sortValue, setSortValue } =
-    useContext(SortContext);
+  const {
+    searchText,
+    updateSearchText,
+    sortValue,
+    setSortValue,
+    categoryValue,
+    setCategoryValue,
+  } = useContext(SortContext);
   return (
     <div className="container">
       <div className="d-flex flex-lg-row flex-md-column flex-sm-column flex-column gap-2 justify-content-sm-center align-items-center">
@@ -29,14 +35,20 @@ export default function Sort() {
             <option value="name">Name</option>
             <option value="price">Price</option>
           </select>
-          <select name="" id="" className="select2 w-100 ">
-            <option value>Category</option>
-            <option value>Electronics</option>
-            <option value>Phones</option>
-            <option value>Laptops</option>
-            <option value>Networking</option>
-            <option value>Monitors</option>
-            <option value>Gamming</option>
+          <select
+            name=""
+            id=""
+            className="select2 w-100"
+            value={categoryValue}
+            onChange={(e) => setCategoryValue(e.target.value)}
+          >
+            <option value="">Category</option>
+            <option value="electronics">Electronics</option>
+            <option value="phones">Phones</option>
+            <option value="laptops">Laptops</option>
+            <option value="networking">Networking</option>
+            <option value="monitors">Monitors</option>
+            <option value="gaming">Gaming</option>
           </select>
         </div>
       </div>
