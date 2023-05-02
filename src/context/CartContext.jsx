@@ -5,7 +5,6 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  const [searchText, setSearchText] = useState("");
 
   //add to cart functionality
   const addToCart = (item) => {
@@ -25,17 +24,6 @@ export const CartProvider = ({ children }) => {
       setCartItems([...cartItems, { ...item, count: 1 }]);
     }
   };
-
-  // search Item
-  // update search text
-  const updateSearchText = (text) => {
-    setSearchText(text);
-  };
-
-  // filter cart items based on search text
-  const filteredCartItems = cartItems.filter((item) =>
-    item.name.toLowerCase().includes(searchText.toLowerCase())
-  );
 
   // remove from cart
   const removeFromCart = (id) => {
@@ -76,7 +64,7 @@ export const CartProvider = ({ children }) => {
   const cartItemCount = cartItems.reduce((acc, { count }) => acc + count, 0);
 
   const cartContextValue = {
-    cartItems: filteredCartItems,
+    cartItems,
     isOpen,
     toggleCart,
     addToCart,
@@ -84,8 +72,6 @@ export const CartProvider = ({ children }) => {
     decreaseCount,
     increaseCount,
     cartItemCount,
-    searchText,
-    updateSearchText,
   };
 
   return (

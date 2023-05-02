@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 
 import { CartContext } from "../context/CartContext";
-import { products } from "../utils/data/products";
 import { SavedContext } from "../context/SavedItemsContext";
+import { SortContext } from "../context/Sort";
 
 export default function ProductListngs() {
+  const { products } = useContext(SortContext);
   const { addToCart } = useContext(CartContext);
   const { addSavedItem } = useContext(SavedContext);
 
