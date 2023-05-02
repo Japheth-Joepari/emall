@@ -9,6 +9,9 @@ import ContactUs from "./pages/ContactUs";
 import Detail from "./pages/Details";
 import Orders from "./pages/Orders";
 import { CartProvider } from "./context/CartContext";
+import SavedItemsProvider from "./context/SavedItemsContext";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/Signup";
 
 const router = createBrowserRouter([
   {
@@ -40,13 +43,25 @@ const router = createBrowserRouter([
     path: "/orders",
     element: <Orders />,
   },
+
+  {
+    path: "/login",
+    element: <SignIn />,
+  },
+
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
 ]);
 
 function App() {
   return (
     <div className="App">
       <CartProvider>
-        <RouterProvider router={router} />
+        <SavedItemsProvider>
+          <RouterProvider router={router} />
+        </SavedItemsProvider>
       </CartProvider>
     </div>
   );

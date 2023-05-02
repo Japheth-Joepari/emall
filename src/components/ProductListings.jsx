@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
+
 import { CartContext } from "../context/CartContext";
+import { products } from "../utils/data/products";
+import { SavedContext } from "../context/SavedItemsContext";
+
 export default function ProductListngs() {
-  const { addToCart, products } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
+  const { addSavedItem } = useContext(SavedContext);
 
   return (
     <div className="container productContainer container-xm marginTop2Rem">
@@ -45,23 +50,22 @@ export default function ProductListngs() {
                 </h5>
                 <div className="product-price-variant gap5">
                   <span className="price current-price smallBoldF">
+                    {"$"}
                     {product.price}
                   </span>
                   <span className="price old-price priceLine">
+                    {"$"}
                     {product.oldPrice}
                   </span>
                 </div>
                 <div className="d-flex flex-row justify-content-start align-items-center gap-2 mt-1">
-                  <a
-                    href="/"
-                    className="cursor-pointer text-decoration-none fa fa-eye eyeicon"
-                  />
+                  <button className="cursor-pointer text-decoration-none fa fa-eye eyeicon" />
                   <button
                     onClick={() => addToCart(product)}
                     className=" fa fa-shopping-basket eyeicon darkBlue"
                   ></button>
-                  <a
-                    href="/"
+                  <button
+                    onClick={() => addSavedItem(product)}
                     className="cursor-pointer text-decoration-none fa fa-heart eyeicon red"
                   />
                 </div>

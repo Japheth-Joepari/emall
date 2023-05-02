@@ -8,9 +8,9 @@ import Saved from "../pages/Saved";
 
 export default function Nav() {
   const { toggleCart, isOpen, cartItemCount } = useContext(CartContext);
-  const { isCartOpen } = useContext(SavedContext);
+  const { isOpenSaved, savedItems, savedItemsCount, toggleSavedCart } =
+    useContext(SavedContext);
 
-  console.log(cartItemCount);
   return (
     <nav className="navbar  navbar-expand-md  sticky-top">
       <div className="container-fluid navb py-2 my-2 nv shadow-sm rounded bg-white">
@@ -72,7 +72,15 @@ export default function Nav() {
               <i className="fa fa-search" />
             </Link>
             <a href="#">
-              <i className="fa-regular fa-heart red" />
+              <i
+                className="fa fa-heart position-relative text-danger"
+                onClick={() => toggleSavedCart()}
+              >
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                  {savedItems.length > 0 ? savedItems.length : 0}
+                  <span className="visually-hidden">items saved</span>
+                </span>
+              </i>
             </a>
             <a href="#">
               <i
@@ -92,7 +100,7 @@ export default function Nav() {
         </div>
       </div>
       {isOpen ? <Cart /> : ""}
-      {isCartOpen ? <Saved /> : ""}
+      {isOpenSaved ? <Saved /> : ""}
     </nav>
   );
 }

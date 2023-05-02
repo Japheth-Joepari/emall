@@ -1,10 +1,10 @@
-import computers from "../assets/images/computers.png";
-import Accessories from "../assets/images/accessories.png";
-import phones from "../assets/images/phones.png";
-import laptops from "../assets/images/laptops.png";
-import networking from "../assets/images/networking.png";
-import monitors from "../assets/images/monitors.png";
-import gamming from "../assets/images/pcgamming.png";
+import computers from "../../assets/images/computers.png";
+import Accessories from "../../assets/images/accessories.png";
+import phones from "../../assets/images/phones.png";
+import laptops from "../../assets/images/laptops.png";
+import networking from "../../assets/images/networking.png";
+import monitors from "../../assets/images/monitors.png";
+import gamming from "../../assets/images/pcgamming.png";
 
 export const categories = [
   {

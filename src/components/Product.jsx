@@ -1,4 +1,4 @@
-import { products } from "../utils/products";
+import { products } from "../utils/data/products";
 
 export default function Product() {
   return (

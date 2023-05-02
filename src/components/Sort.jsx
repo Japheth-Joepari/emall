@@ -14,10 +14,8 @@ export default function Sort() {
         <div className="d-flex flex-lg-row flex-md-row flex-xl-row flex-sm-column flex-column gap-2 w-100">
           <select name="" id="" className="select2 w-100">
             <option value>Sort By</option>
-            <option value>Select</option>
-            <option value>Select</option>
-            <option value>Select</option>
-            <option value>Select</option>
+            <option value>Name</option>
+            <option value>Price</option>
           </select>
           <select name="" id="" className="select2 w-100 ">
             <option value>Category</option>
@@ -27,20 +25,6 @@ export default function Sort() {
             <option value>Networking</option>
             <option value>Monitors</option>
             <option value>Gamming</option>
-          </select>
-          <select name="" id="" className="select2 w-100">
-            <option value>Type</option>
-            <option value>Select</option>
-            <option value>Select</option>
-            <option value>Select</option>
-            <option value>Select</option>
-          </select>
-          <select name="" id="" className="select2 w-100">
-            <option value>Price Range</option>
-            <option value>Select</option>
-            <option value>Select</option>
-            <option value>Select</option>
-            <option value>Select</option>
           </select>
         </div>
       </div>

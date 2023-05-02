@@ -2,7 +2,10 @@ import { SavedContext } from "../context/SavedItemsContext";
 import { useContext } from "react";
 
 export default function Saved() {
-  const { removeFromSavedItems, toggleSavedCart } = useContext(SavedContext);
+  const { removeFromSavedItems, savedItems, toggleSavedCart } =
+    useContext(SavedContext);
+  console.log(savedItems);
+
   return (
     <div>
       <div className="row cartContainer shadow-lg scrollable bg-white">
@@ -17,7 +20,7 @@ export default function Saved() {
           </div>
           <hr />
           <div className="d-flex flex-column justify-content-between gap-2 ">
-            {cartItems.map((item) => {
+            {savedItems.map((item) => {
               // console.log();
               return (
                 <div className="card border-0" key={item.id}>
@@ -25,7 +28,7 @@ export default function Saved() {
                     <div className="col-lg-2 col-md-2 col-3 ">
                       <button
                         className="btn-btn btTop"
-                        onClick={() => removeFromSavedItems(item.id)}
+                        onClick={() => removeFromCart(item.id)}
                       >
                         x
                       </button>
@@ -42,10 +45,12 @@ export default function Saved() {
                             <b>{item.title}</b> {/* insert item title here */}
                           </h5>
                           <span className="rating-icon card-text ratingColor d-flex">
-                            <button className="btn btn-danger">Remove </button>
+                            <i className="fas fa-star" />
+                            <i className="fas fa-star" />
+                            <i className="fas fa-star" />
+                            <i className="fas fa-star" />
+                            <i className="fal fa-star" />
                           </span>
-                          <p>{item.description}</p>{" "}
-                          {/* insert item description here */}
                         </div>
                       </div>
 
@@ -53,18 +58,10 @@ export default function Saved() {
                         <div className="card-body">
                           <div className="d-flex flex-row justify-content-start gap-2 mtt">
                             <button
-                              className="btn-btn"
-                              onClick={() => increaseCount(item.id)}
+                              className="btn btn-danger"
+                              onClick={() => removeFromSavedItems(item)}
                             >
-                              +
-                            </button>
-                            <b>{item.quantity}</b>{" "}
-                            {/* insert item quantity here */}
-                            <button
-                              className="btn-btn"
-                              onClick={() => decreaseCount(item.id)}
-                            >
-                              -
+                              <i className="fa fa-trash"></i> Unsave
                             </button>
                           </div>
                         </div>
