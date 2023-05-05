@@ -1,4 +1,4 @@
-export default function Review() {
+export default function Review({ rating }) {
   return (
     <div className="container">
       <div className="row ">
@@ -121,33 +121,19 @@ export default function Review() {
         </div>
         <div className="col-md-6 my-2">
           <h2>
-            <b>Previous Ratings</b>
+            <b> Ratings</b>
           </h2>
           <ul className="list-group">
-            <li className="list-group-item">
-              <i className="fas fa-star ratingColor" />
-              <i className="fas fa-star ratingColor" />
-              <i className="fas fa-star ratingColor" />
-              <i className="fas fa-star ratingColor" />
-              <i className="fas fa-star ratingColor" /> - "This product is
-              amazing!"
-            </li>
-            <li className="list-group-item ">
-              <i className="fas fa-star ratingColor" />
-              <i className="fas fa-star ratingColor" />
-              <i className="fas fa-star ratingColor" />
-              <i className="fas fa-star ratingColor" />
-              <i className="far fa-star ratingColor" /> - "Pretty good product,
-              but could be better."
-            </li>
-            <li className="list-group-item">
-              <i className="fas fa-star ratingColor" />
-              <i className="fas fa-star ratingColor" />
-              <i className="fas fa-star ratingColor" />
-              <i className="far fa-star ratingColor" />
-              <i className="far fa-star ratingColor" /> - "Decent product, but
-              not great."
-            </li>
+            {rating.map((rate) => (
+              <li className="list-group-item">
+                <i className="fas fa-star ratingColor" />
+                <i className="fas fa-star ratingColor" />
+                <i className="fas fa-star ratingColor" />
+                <i className="fas fa-star ratingColor" />
+                <i className="fas fa-star ratingColor" />
+                {rate}
+              </li>
+            ))}
           </ul>
         </div>
       </div>

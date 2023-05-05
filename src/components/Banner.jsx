@@ -4,6 +4,7 @@ import author2 from "../assets/images/author2.png";
 import author3 from "../assets/images/author3.png";
 import author4 from "../assets/images/author4.png";
 import { Link } from "react-router-dom";
+import { feature } from "../utils/data/products";
 
 export default function Banner() {
   return (
@@ -14,12 +15,12 @@ export default function Banner() {
             <p className="bannerp pnkColor">
               <i className="fas fa-fire"></i> Hot deals this week
             </p>
-            <h1 className="bannerh1">Roco Wireless</h1>
-            <h1 className="bannerh1">Headphones</h1>
+            <h1 className="bannerh1">{feature.title}</h1>
             <div id="cont1">
               <div className="bannerBtn">
                 <Link
                   className="btn btn-primary shadow-lg btn-lg"
+                  state={{ data: feature }}
                   id="shoppingBtn"
                   to={"/detail"}
                 >
@@ -53,7 +54,7 @@ export default function Banner() {
                   </span>
                   <span className="review-text">
                     {" "}
-                    <span>100+</span> Reviews{" "}
+                    <span>{feature.productReviews.length}</span>+ Reviews{" "}
                   </span>
                 </div>
               </div>
@@ -67,7 +68,7 @@ export default function Banner() {
                 <b>From</b>
               </span>
               <span className="">
-                <b>$70</b>
+                <b>${feature.price}</b>
               </span>
             </div>
           </div>

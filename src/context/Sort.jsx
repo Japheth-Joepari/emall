@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { products } from "../utils/data/products";
 
 export const SortContext = createContext();
@@ -7,24 +7,28 @@ export const SortProvider = ({ children }) => {
   const [searchText, setSearchText] = useState("");
   const [sortValue, setSortValue] = useState("");
   const [categoryValue, setCategoryValue] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  // search Item
-  // update search text
-  const updateSearchText = (text) => {
-    setSearchText(text);
-  };
+  useEffect(() => {
+    // retrieve the URL parameter named "category"
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get("category");
+    console.log(category);
 
-  // filter products based on search text
-  // filter products based on search text and sort value
-  const filteredProducts = () => {
+    // filter products based on the URL parameter
     let sortedProducts = [...products];
+    if (category) {
+      sortedProducts = sortedProducts.filter(
+        (item) => item.category.toLowerCase() === category.toLowerCase()
+      );
+    }
 
+    // apply other filters if they exist
     if (searchText) {
       sortedProducts = sortedProducts.filter((item) =>
         item.title.toLowerCase().includes(searchText.toLowerCase())
       );
     }
-
     if (sortValue) {
       sortedProducts = sortedProducts.sort((a, b) => {
         switch (sortValue) {
@@ -38,19 +42,18 @@ export const SortProvider = ({ children }) => {
       });
     }
 
-    if (categoryValue) {
-      sortedProducts = sortedProducts.filter(
-        (item) => item.category.toLowerCase() === categoryValue.toLowerCase()
-      );
-    }
+    // set the filtered products
+    setFilteredProducts(sortedProducts);
+  }, [searchText, sortValue, categoryValue]);
 
-    return sortedProducts;
+  // update search text
+  const updateSearchText = (text) => {
+    setSearchText(text);
   };
 
   //   filter based on SortValue
-
   const SortContextValue = {
-    products: filteredProducts(),
+    products: filteredProducts,
     searchText,
     updateSearchText,
     setSortValue,

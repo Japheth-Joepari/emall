@@ -6,6 +6,26 @@ import mouse from "../../assets/images/logimouse.png";
 import webcam from "../../assets/images/logicamera.png";
 import amapiano from "../../assets/images/lobeats.png";
 import macbook from "../../assets/images/pngtree-apple-macbook-pro-mockup-png-image_6277127.png";
+import featured from "../../assets/images/product-38.png";
+
+export const feature = {
+  id: 0,
+  ratings: 4,
+  category: "accessories",
+  title: "Roco Wireless Headphones",
+  image: featured,
+  stars: 5,
+  price: "70",
+  oldPrice: "700",
+  productReviews: [
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. - Okoro",
+    "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, - Buhari ",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. - Okoro",
+    "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, - Buhari ",
+    "Lorem ipsum dolor sit amet.. - Emeka",
+    "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. - Casper ",
+  ],
+};
 
 export const products = [
   {
@@ -17,6 +37,12 @@ export const products = [
     stars: 5,
     price: "250",
     oldPrice: "700",
+    productReviews: [
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. - Okoro",
+      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, - Buhari ",
+      "Lorem ipsum dolor sit amet.. - Emeka",
+      "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. - Casper ",
+    ],
   },
 
   {
@@ -28,6 +54,12 @@ export const products = [
     stars: 5,
     price: "540",
     oldPrice: "900",
+    productReviews: [
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. - Emily",
+      "The first line of Lorem Ipsum, comes from a line in section 1.10.32. - John",
+      "Lorem ipsum dolor sit amet.. - Emeka",
+      "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. - Casper ",
+    ],
   },
 
   {
@@ -39,6 +71,10 @@ export const products = [
     stars: 3.5,
     price: "120",
     oldPrice: "900",
+    productReviews: [
+      "it is a long established fact that a reader will be distracted by the readable - Emabong",
+      "but also the leap into electronic typesetting, remaining essentially unchanged. - Eunice",
+    ],
   },
 
   {
@@ -50,6 +86,12 @@ export const products = [
     stars: 5,
     price: "120",
     oldPrice: "980",
+    productReviews: [
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. - Onyinyechi",
+      "The first line of Lorem Ipsum, comes from a line in section 1.10.32. - kalu",
+      "Lorem ipsum dolor sit amet.. - castro ",
+      "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. - Onyema",
+    ],
   },
 
   {
@@ -61,6 +103,12 @@ export const products = [
     stars: 4,
     price: "320",
     oldPrice: "1200",
+    productReviews: [
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. - Bully",
+      "The first line of Lorem Ipsum, comes from a line in section 1.10.32. - Inyeabong",
+      "Lorem ipsum dolor sit amet.. - Monterey",
+      "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. - William",
+    ],
   },
 
   {
@@ -72,6 +120,12 @@ export const products = [
     stars: 3,
     price: "12",
     oldPrice: "90",
+    productReviews: [
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. - Balablu",
+      "The first line of Lorem Ipsum, comes from a line in section 1.10.32. - Buhari",
+      "Lorem ipsum dolor sit amet.. - Tinubu",
+      "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. - Okafor",
+    ],
   },
 
   {
@@ -83,6 +137,12 @@ export const products = [
     stars: 5,
     price: "320",
     oldPrice: "1200",
+    productReviews: [
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. - Melanc",
+      "The first line of Lorem Ipsum, comes from a line in section 1.10.32. - Balu ",
+      "Lorem ipsum dolor sit amet.. - Bola",
+      "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. - Ahmed",
+    ],
   },
 
   {
@@ -94,5 +154,11 @@ export const products = [
     stars: 5,
     price: "12",
     oldPrice: "90",
+    productReviews: [
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. - Eniola",
+      "The first line of Lorem Ipsum, comes from a line in section 1.10.32. - Bular",
+      "Lorem ipsum dolor sit amet.. - Madula",
+      "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. - Kento",
+    ],
   },
 ];

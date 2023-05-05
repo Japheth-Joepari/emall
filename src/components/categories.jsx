@@ -16,7 +16,7 @@ export default function Categories() {
         {categories.map((category) => (
           <a
             key={category.id}
-            href="/"
+            href={`/products?category=${category.title}`}
             className="text-center cursor-pointer text-decoration-none custom-col col-6 col-sm-6 col-xm-6 col-md-4 col-lg-2 py-2 my-2"
           >
             <div className="card d-flex flex-column border-0 shadow-sm">

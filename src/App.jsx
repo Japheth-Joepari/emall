@@ -38,6 +38,7 @@ const router = createBrowserRouter([
   {
     path: "/detail",
     element: <Detail />,
+    props: true,
   },
 
   {
@@ -53,6 +54,12 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+
+  {
+    path: "/product/:id",
+    element: <Detail />,
+    props: true,
   },
 ]);
 

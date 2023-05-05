@@ -2,7 +2,7 @@ import logo from "../assets/images/logos.jpg";
 import Cart from "../pages/Cart";
 import { CartContext } from "../context/CartContext";
 import { SavedContext } from "../context/SavedItemsContext";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import Saved from "../pages/Saved";
 
@@ -12,13 +12,11 @@ export default function Nav() {
     useContext(SavedContext);
 
   return (
-    <nav className="navbar  navbar-expand-md  sticky-top">
+    <nav className="navbar navbar-expand-md bg-body-tetiary sticky-top">
       <div className="container-fluid navb py-2 my-2 nv shadow-sm rounded bg-white">
-        <Link to="/" className="navbar-brand h-25 d-flex logoBrand">
+        <Link to="/" className="navbar-brand">
           <img src={logo} alt="logo" className="logoIm" />
-          <h4>
-            <b>emall</b>
-          </h4>
+          <b>Emall</b>
         </Link>
         <button
           className="navbar-toggler"
@@ -37,19 +35,34 @@ export default function Nav() {
         >
           <ul className="navbar-nav mb-2 mb-lg-0 mx-auto gap-4">
             <li className="nav-item">
-              <Link className="nav-link active" to="/">
+              <NavLink
+                exact
+                to="/"
+                activeClassName="active"
+                className="nav-link"
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/products">
+              <NavLink
+                exact
+                to="/products"
+                activeClassName="active"
+                className="nav-link"
+              >
                 Products
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contact Us
-              </Link>
+              <NavLink
+                exact
+                to="/contact"
+                activeClassName="active"
+                className="nav-link"
+              >
+                Contact us
+              </NavLink>
             </li>
             <li className="nav-item d-lg-none d-md-none d-sm-block">
               <Link className="nav-link" to="/profile">

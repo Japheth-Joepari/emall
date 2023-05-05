@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logos.jpg";
+import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   return (
@@ -28,19 +29,32 @@ export default function NavBar() {
         >
           <ul className="navbar-nav mb-2 mb-lg-0 mx-auto gap-4">
             <li className="nav-item">
-              <Link className="nav-link active" to="/">
+              <NavLink
+                exact
+                to="/"
+                activeClassName="active"
+                className="nav-link"
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/products">
+              <NavLink
+                to="/products"
+                activeClassName="active"
+                className="nav-link"
+              >
                 Products
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">
+              <NavLink
+                to="/contact"
+                activeClassName="active"
+                className="nav-link"
+              >
                 Contact Us
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item d-lg-none d-md-none d-sm-block">
               <Link className="nav-link" to="/profile">

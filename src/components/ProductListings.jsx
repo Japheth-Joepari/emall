@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { SavedContext } from "../context/SavedItemsContext";
 import { SortContext } from "../context/Sort";
+import { Link } from "react-router-dom";
+// import { Link, useHistory } from "react-router-dom";
 
 export default function ProductListngs() {
   const { products } = useContext(SortContext);
@@ -60,7 +62,11 @@ export default function ProductListngs() {
                   </span>
                 </div>
                 <div className="d-flex flex-row justify-content-start align-items-center gap-2 mt-1">
-                  <button className="cursor-pointer text-decoration-none fa fa-eye eyeicon" />
+                  <Link
+                    to={`/product/${product.id}`}
+                    className="cursor-pointer text-decoration-none fa fa-eye eyeicon"
+                  ></Link>
+
                   <button
                     onClick={() => addToCart(product)}
                     className=" fa fa-shopping-basket eyeicon darkBlue"
