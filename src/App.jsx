@@ -1,7 +1,7 @@
 import "./assets/styles/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Products from "./pages/Products";
 import Profile from "./pages/Profile";
@@ -10,71 +10,24 @@ import Detail from "./pages/Details";
 import Orders from "./pages/Orders";
 import { CartProvider } from "./context/CartContext";
 import { SortProvider } from "./context/Sort";
+import { AuthContext, AuthProvider } from "./context/AuthContext";
 import SavedItemsProvider from "./context/SavedItemsContext";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/Signup";
+import AllRoutes from "./routes/routes";
+import SignIn from "./pages/auth/SignIn";
+import SignUp from "./pages/auth/Signup";
+import PrivateRoute from "./routes/protected";
+import { useContext } from "react";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-  },
-
-  {
-    path: "/products",
-    element: <Products />,
-  },
-
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
-
-  {
-    path: "/contact",
-    element: <ContactUs />,
-  },
-
-  {
-    path: "/detail",
-    element: <Detail />,
-    props: true,
-  },
-
-  {
-    path: "/orders",
-    element: <Orders />,
-  },
-
-  {
-    path: "/login",
-    element: <SignIn />,
-  },
-
-  {
-    path: "/signup",
-    element: <SignUp />,
-  },
-
-  {
-    path: "/product/:id",
-    element: <Detail />,
-    props: true,
-  },
-]);
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <SortProvider>
-        <CartProvider>
-          <SavedItemsProvider>
-            <RouterProvider router={router} />
-          </SavedItemsProvider>
-        </CartProvider>
-      </SortProvider>
-    </div>
+    <SortProvider>
+      <CartProvider>
+        <SavedItemsProvider>
+          <AuthProvider>
+            <AllRoutes />
+          </AuthProvider>
+        </SavedItemsProvider>
+      </CartProvider>
+    </SortProvider>
   );
 }
-
-export default App;

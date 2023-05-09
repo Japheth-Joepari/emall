@@ -1,5 +1,4 @@
 import computers from "../../assets/images/computers.png";
-import Accessories from "../../assets/images/accessories.png";
 import phones from "../../assets/images/phones.png";
 import laptops from "../../assets/images/laptops.png";
 import networking from "../../assets/images/networking.png";
@@ -39,7 +38,7 @@ export const categories = [
 
   {
     id: 6,
-    title: "Gamming",
+    title: "Gaming",
     image: gamming,
   },
 ];

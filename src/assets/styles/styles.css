@@ -169,6 +169,8 @@ body {
 
 .prodBg {
   background-color: #f6fafc;
+  height: 18rem;
+  object-fit: contain;
 }
 
 .gap5 {
@@ -233,8 +235,8 @@ body {
   /* border-bottom: 3px solid rgb(247, 237, 237); */
 }
 
-.bannerbg {
-  /* background: #f9f3f0; */
+.bbg {
+  background: #f9f3f0;
 }
 
 .white {
@@ -331,13 +333,19 @@ body {
 
   .mtt {
     position: relative;
-    bottom: 2rem;
+    bottom: 0.2rem;
+    right: 1rem;
+  }
+
+  .mtt1 {
+    position: relative;
+    top: 0.1rem;
   }
 
   .banner-container {
     /* height: 30b;
    */
-    height: 300px;
+    height: 100px;
   }
 
   .timing {
@@ -390,7 +398,7 @@ body {
   .banner-container {
     /* height: 30b;
    */
-    height: 780px;
+    height: 650px;
   }
   #bannerpricing {
     display: flex;
@@ -497,6 +505,11 @@ body {
   }
   .poster-section img {
     width: 40%;
+  }
+
+  .content {
+    position: relative;
+    right: 2.3rem;
   }
 }
 
@@ -862,4 +875,15 @@ hr {
 
 .crtItem {
   margin-left: 1rem;
+}
+
+.crtImg {
+  height: 5.1rem;
+  padding: 0.7rem;
+  /* width: 100%; */
+  object-fit: contain;
+}
+
+.loadImg {
+  margin-top: 8rem;
 }

@@ -1,4 +1,32 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
 export default function EditProfile() {
+  const { userSignOut, isLoggedIn } = useContext(AuthContext);
+  const [loading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  }, [isLoggedIn, navigate]);
+
+  const handleSignOut = () => {
+    userSignOut();
+    navigate("/login");
+  };
   return (
     <div className="container">
       <div className="row gutters py-1">
@@ -13,8 +41,12 @@ export default function EditProfile() {
                       alt="Maxwell Admin"
                     />
                   </div>
-                  <a href="/orders" className="btn btn-primary ">
-                    <i className="fab fa-amazon-pay"> </i> (4) Orders in que
+                  <a
+                    href="#"
+                    className="btn btn-primary "
+                    onClick={handleSignOut}
+                  >
+                    <i className="fa fa-power-off"> </i> Signout
                   </a>
                   <h5 className="user-name">Yuki Hayashi</h5>
                   <h6 className="user-email">yuki@Maxwell.com</h6>
@@ -23,8 +55,9 @@ export default function EditProfile() {
                   <h5>About</h5>
 
                   <p>
-                    I'm Yuki. Full Stack Designer I enjoy creating user-centric,
-                    delightful and human experiences.
+                    My name is Yuki, and I am a business-oriented buyer with a
+                    strong focus on purchasing only the highest quality products
+                    available.{" "}
                   </p>
                 </div>
               </div>
@@ -40,7 +73,7 @@ export default function EditProfile() {
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 py-2">
                   <div className="form-group">
-                    <label for="fullName">Full Name</label>
+                    <label htmlFor="fullName">Full Name</label>
                     <input
                       type="text"
                       className="form-control"
@@ -51,7 +84,7 @@ export default function EditProfile() {
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 py-2">
                   <div className="form-group">
-                    <label for="eMail">Email</label>
+                    <label htmlFor="eMail">Email</label>
                     <input
                       type="email"
                       className="form-control"
@@ -62,7 +95,7 @@ export default function EditProfile() {
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 py-2">
                   <div className="form-group">
-                    <label for="phone">Phone</label>
+                    <label htmlFor="phone">Phone</label>
                     <input
                       type="text"
                       className="form-control"
@@ -73,7 +106,7 @@ export default function EditProfile() {
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 py-2">
                   <div className="form-group">
-                    <label for="website">Website URL</label>
+                    <label htmlFor="website">Website URL</label>
                     <input
                       type="url"
                       className="form-control"
@@ -84,55 +117,27 @@ export default function EditProfile() {
                 </div>
               </div>
               <div className="row gutters py-1">
-                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <h6 className="mt-3 mb-2 text-primary">Address</h6>
-                </div>
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 py-2">
-                  <div className="form-group">
-                    <label for="Street">Street</label>
-                    <input
-                      type="name"
-                      className="form-control"
-                      id="Street"
-                      placeholder="Enter Street"
-                    />
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 py-2">
-                  <div className="form-group">
-                    <label for="ciTy">City</label>
-                    <input
-                      type="name"
-                      className="form-control"
-                      id="ciTy"
-                      placeholder="Enter City"
-                    />
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 py-2">
-                  <div className="form-group">
-                    <label for="sTate">State</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="sTate"
-                      placeholder="Enter State"
-                    />
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 py-2">
-                  <div className="form-group">
-                    <label for="zIp">Zip Code</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="zIp"
-                      placeholder="Zip Code"
-                    />
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="website">About Me</label>
+                  <textarea
+                    className="form-control"
+                    id="website"
+                    placeholder="About Me"
+                  ></textarea>
                 </div>
               </div>
               <div className="row gutters py-1">
+                <div className="form-group">
+                  <label htmlFor="website">Upload Image</label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="website"
+                    placeholder="Website url"
+                  />
+                </div>
+              </div>
+              <div className="row gutters py-3">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <div className="text-right d-flex flex-row gap-2">
                     <button

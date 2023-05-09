@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Nav from "../components/Header";
 import Review from "../components/Review";
@@ -8,7 +7,7 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { products } from "../utils/data/products";
 
-export default function Detail(props) {
+export default function Detail() {
   const { addToCart } = useContext(CartContext);
   const { addSavedItem } = useContext(SavedContext);
 
@@ -20,13 +19,13 @@ export default function Detail(props) {
   return (
     <div className="bggg">
       <Nav />
-      {productDetails.map((product) => (
-        <div className="container ">
+      {productDetails.map((product, index) => (
+        <div className="container " key={index}>
           <div className="row py-6   border-0 shadow-none  ">
             <div className="col-lg-6 col-sm-10">
               <img
                 src={product.image}
-                alt
+                alt="loading"
                 className=" object-fit-contain w-100"
               />
             </div>
@@ -53,7 +52,8 @@ export default function Detail(props) {
                 <i className="fas fa-star" />
                 <i className="fas fa-star" />
                 <i className="fas fa-star" />
-                <i className="fal fa-star" /> (0) Rating
+                <i className="fal fa-star" /> ({product.productReviews.length})
+                Rating
               </span>
               <div className="text-success">
                 <p>
@@ -67,11 +67,7 @@ export default function Detail(props) {
                 </p>
               </div>
               <hr />
-              <p className="">
-                In ornare lorem ut est dapibus, ut tincidunt nisi pretium.
-                Integer ante est, hendrerit in rutrum quis, elementum eget
-                magna. Pellentesque sagittis dictum libero, eu dignissim tellus.
-              </p>
+              <p className="">{product.detail}</p>
               <div className="d-flex flex-row justify-content-start align-items-center gap-2 mt-1">
                 <a
                   href="#"
@@ -87,10 +83,10 @@ export default function Detail(props) {
               <hr />
             </div>
           </div>
+          <Review rating={product.productReviews} />
         </div>
       ))}
 
-      {/* <Review rating={product.productReviews} /> */}
       <div className="bg-white">
         <Footer />
       </div>

@@ -124,8 +124,8 @@ export default function Review({ rating }) {
             <b> Ratings</b>
           </h2>
           <ul className="list-group">
-            {rating.map((rate) => (
-              <li className="list-group-item">
+            {rating.map((rate, index) => (
+              <li className="list-group-item" key={index}>
                 <i className="fas fa-star ratingColor" />
                 <i className="fas fa-star ratingColor" />
                 <i className="fas fa-star ratingColor" />

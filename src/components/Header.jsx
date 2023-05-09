@@ -3,13 +3,20 @@ import Cart from "../pages/Cart";
 import { CartContext } from "../context/CartContext";
 import { SavedContext } from "../context/SavedItemsContext";
 import { Link, NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Saved from "../pages/Saved";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Nav() {
   const { toggleCart, isOpen, cartItemCount } = useContext(CartContext);
   const { isOpenSaved, savedItems, savedItemsCount, toggleSavedCart } =
     useContext(SavedContext);
+
+  const { isLoggedIn } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
 
   return (
     <nav className="navbar navbar-expand-md bg-body-tetiary sticky-top">
@@ -35,20 +42,14 @@ export default function Nav() {
         >
           <ul className="navbar-nav mb-2 mb-lg-0 mx-auto gap-4">
             <li className="nav-item">
-              <NavLink
-                exact
-                to="/"
-                activeClassName="active"
-                className="nav-link"
-              >
+              <NavLink to="/" activeclassname="active" className="nav-link">
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink
-                exact
                 to="/products"
-                activeClassName="active"
+                activeclassname="active"
                 className="nav-link"
               >
                 Products
@@ -56,28 +57,37 @@ export default function Nav() {
             </li>
             <li className="nav-item">
               <NavLink
-                exact
                 to="/contact"
-                activeClassName="active"
+                activeclassname="active"
                 className="nav-link"
               >
                 Contact us
               </NavLink>
             </li>
             <li className="nav-item d-lg-none d-md-none d-sm-block">
-              <Link className="nav-link" to="/profile">
-                Account setting
-              </Link>
+              {isLoggedIn ? (
+                <Link className="nav-link" to="/profile">
+                  Account setting
+                </Link>
+              ) : (
+                <Link className="nav-link" to="/login">
+                  Account setting
+                </Link>
+              )}
             </li>
             <li className="nav-item d-lg-none d-md-none d-sm-block">
-              <a className="nav-link" href="#">
+              <a
+                className="nav-link"
+                href="#"
+                onClick={() => toggleSavedCart()}
+              >
                 Saved Item
               </a>
             </li>
             <li className="nav-item d-lg-none d-md-none d-sm-block">
-              <button className="nav-link " href="#">
+              <a className="nav-link " href="#" onClick={() => toggleCart()}>
                 Cart
-              </button>
+              </a>
             </li>
           </ul>
           <div className="navbar-nav m-2 gap-4 d-none d-md-flex">
@@ -106,9 +116,15 @@ export default function Nav() {
                 </span>
               </i>
             </a>
-            <Link to="/profile">
-              <i className="fa-regular fa-user" />
-            </Link>
+            {isLoggedIn ? (
+              <NavLink to="/profile">
+                <i className="fa-regular fa-user" />
+              </NavLink>
+            ) : (
+              <NavLink to="/login">
+                <i className="fa-regular fa-user" />
+              </NavLink>
+            )}
           </div>
         </div>
       </div>

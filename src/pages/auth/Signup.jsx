@@ -1,9 +1,13 @@
-import logo from "../assets/images/logos.jpg";
+import logo from "../../assets/images/logos.jpg";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
-export default function Signin() {
+export default function SignUp() {
+  const { email, password, SignUp, setEmail, setPassword } =
+    useContext(AuthContext);
   return (
-    <section className="vh-100 bg-light">
+    <section className="vh-100 bbg">
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-10">
@@ -22,7 +26,7 @@ export default function Signin() {
                 </div>
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-5 text-black">
-                    <form>
+                    <form onSubmit={SignUp}>
                       <Link
                         to={"/"}
                         className="text-decoration-none text-black d-flex align-items-center mb-3 pb-1"
@@ -33,57 +37,62 @@ export default function Signin() {
                         </b>
                       </Link>
                       <h5
-                        className="fw-normal mb-3 pb-3"
+                        className="fw-normal mb-3 pb-3 text-muted"
                         style={{ letterSpacing: 1 }}
                       >
                         Register to become a member
                       </h5>
-
+                      <label className="form-label" htmlFor="email">
+                        Email address
+                      </label>
                       <div className="form-outline mb-3">
                         <input
                           type="email"
-                          id="form2Example17"
+                          id="email"
+                          name="email"
+                          value={email}
                           className="form-control form-control-lg"
+                          onChange={(e) => setEmail(e.target.value)}
                         />
-                        <label className="form-label" htmlFor="form2Example17">
-                          Email address
-                        </label>
                       </div>
+
+                      <label className="form-label" htmlFor="password">
+                        Password
+                      </label>
                       <div className="form-outline mb-3">
                         <input
                           type="password"
-                          id="form2Example27"
+                          id="password"
+                          value={password}
+                          name="password"
                           className="form-control form-control-lg"
+                          onChange={(e) => setPassword(e.target.value)}
                         />
-                        <label className="form-label" htmlFor="form2Example27">
-                          Password
-                        </label>
                       </div>
                       <div className="pt-1 mb-3">
                         <button
                           className="btn btn-dark  btn-block"
-                          type="button"
+                          type="submit"
                         >
-                          Signin
+                          Register
                         </button>
                       </div>
                       <button
                         className="btn btn-outline-primary btn-lg w-100 btn-block"
-                        type="button"
+                        type="submit"
                       >
                         <i className="fab fa-google"></i>
-                        {"  Sign in using Google"}
+                        {"  Sign Up using Google"}
                       </button>
                       <div className="d-flex p-2 justify-content-between">
                         <a className="small text-muted" href="#!">
                           Forgot password?
                         </a>
                         <Link
-                          to="/signup"
-                          className=""
-                          style={{ color: "#393f81" }}
+                          to="/login"
+                          className="text-decoration-none text-muted"
                         >
-                          Don't have an account?
+                          Already have an account?
                         </Link>
                       </div>
                     </form>

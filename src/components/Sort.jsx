@@ -42,13 +42,13 @@ export default function Sort() {
             value={categoryValue}
             onChange={(e) => setCategoryValue(e.target.value)}
           >
-            <option value="">Category</option>
-            <option value="electronics">Electronics</option>
+            <option value="">Choose Category</option>
             <option value="phones">Phones</option>
             <option value="laptops">Laptops</option>
             <option value="networking">Networking</option>
             <option value="monitors">Monitors</option>
             <option value="gaming">Gaming</option>
+            <option value="">Electronics</option>
           </select>
         </div>
       </div>

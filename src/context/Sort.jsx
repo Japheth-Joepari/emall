@@ -23,6 +23,13 @@ export const SortProvider = ({ children }) => {
       );
     }
 
+    if (categoryValue) {
+      console.log(categoryValue);
+      sortedProducts = sortedProducts.filter(
+        (item) => item.category.toLowerCase() === categoryValue.toLowerCase()
+      );
+    }
+
     // apply other filters if they exist
     if (searchText) {
       sortedProducts = sortedProducts.filter((item) =>

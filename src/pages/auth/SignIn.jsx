@@ -1,8 +1,41 @@
-import logo from "../assets/images/logos.jpg";
-import { Link } from "react-router-dom";
+import logo from "../../assets/images/logos.jpg";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import Loading from "../../assets/images/ecom.gif";
 
-export default function SignUp() {
-  return (
+export default function Signin() {
+  const navigate = useNavigate();
+
+  const { isLoggedIn, email, password, SignIn, setEmail, setPassword } =
+    useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      // console.log(isLoggedIn);
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    SignIn();
+  };
+
+  return isLoading ? (
+    <div className="d-flex flex-row justify-content-center align-items-center align-content-center loadImg">
+      <img src={Loading} alt="" className=" img-fluid " />
+    </div>
+  ) : (
     <section className="vh-100 bg-light">
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
@@ -22,7 +55,7 @@ export default function SignUp() {
                 </div>
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-5 text-black">
-                    <form>
+                    <form onSubmit={handleSignIn}>
                       <Link
                         to={"/"}
                         className="text-decoration-none text-black d-flex align-items-center mb-3 pb-1"
@@ -36,44 +69,42 @@ export default function SignUp() {
                         className="fw-normal mb-3 pb-3"
                         style={{ letterSpacing: 1 }}
                       >
-                        Register to become a member
+                        Login to your Account
                       </h5>
+
+                      <label className="form-label" htmlFor="email">
+                        Email address
+                      </label>
                       <div className="form-outline mb-3">
                         <input
                           type="email"
-                          id="form2Example17"
+                          id="email"
+                          name="email"
+                          value={email}
                           className="form-control form-control-lg"
+                          onChange={(e) => setEmail(e.target.value)}
                         />
-                        <label className="form-label" htmlFor="form2Example17">
-                          Full Name
-                        </label>
                       </div>
-                      <div className="form-outline mb-3">
-                        <input
-                          type="email"
-                          id="form2Example17"
-                          className="form-control form-control-lg"
-                        />
-                        <label className="form-label" htmlFor="form2Example17">
-                          Email address
-                        </label>
-                      </div>
+
+                      <label className="form-label" htmlFor="password">
+                        Password
+                      </label>
                       <div className="form-outline mb-3">
                         <input
                           type="password"
-                          id="form2Example27"
+                          id="password"
+                          value={password}
+                          name="password"
                           className="form-control form-control-lg"
+                          onChange={(e) => setPassword(e.target.value)}
                         />
-                        <label className="form-label" htmlFor="form2Example27">
-                          Password
-                        </label>
                       </div>
                       <div className="pt-1 mb-3">
                         <button
                           className="btn btn-dark  btn-block"
-                          type="button"
+                          type="submit"
                         >
-                          Register
+                          Signin
                         </button>
                       </div>
                       <button
@@ -81,18 +112,18 @@ export default function SignUp() {
                         type="button"
                       >
                         <i className="fab fa-google"></i>
-                        {"  Sign Up using Google"}
+                        {"  Sign in using Google"}
                       </button>
                       <div className="d-flex p-2 justify-content-between">
                         <a className="small text-muted" href="#!">
                           Forgot password?
                         </a>
                         <Link
-                          to="/login"
+                          to="/signup"
                           className=""
                           style={{ color: "#393f81" }}
                         >
-                          Already have an account?
+                          Don't have an account?
                         </Link>
                       </div>
                     </form>

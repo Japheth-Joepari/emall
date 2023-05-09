@@ -4,10 +4,19 @@ import { CartContext } from "../context/CartContext";
 import { SavedContext } from "../context/SavedItemsContext";
 import { SortContext } from "../context/Sort";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 // import { Link, useHistory } from "react-router-dom";
 
 export default function ProductListngs() {
-  const { products } = useContext(SortContext);
+  // pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(8);
+  const { products: allProducts } = useContext(SortContext);
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const products = allProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  // add to cart
   const { addToCart } = useContext(CartContext);
   const { addSavedItem } = useContext(SavedContext);
 
@@ -32,13 +41,13 @@ export default function ProductListngs() {
               className="card border-0 text-decoration-none text-black"
               key={product.id}
             >
-              <div className="w-100 prodBg">
+              <Link to={`/product/${product.id}`} className="w-100 prodBg">
                 <img
                   src={product.image}
                   alt="loading"
                   className="w-100 prodBg"
                 />
-              </div>
+              </Link>
               <div className="card-body py-2 bg-white">
                 <div className="product-rating py-2">
                   <span className="icon ratingColor">
@@ -81,11 +90,27 @@ export default function ProductListngs() {
           </div>
         ))}
       </div>
+
+      {/* Pagination Button */}
       <div className="d-flex align-items-center justify-content-center py-5">
-        <a className="btn btn-outline-primary btn-lg">
-          {" "}
-          <i className="fa fa-shopping-basket" /> more products
-        </a>
+        <div className="d-flex align-items-center justify-content-center my-4">
+          <button
+            className="btn btn-primary mx-1"
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            <i className="fa-solid fa-circle-arrow-left"></i>
+            {" Previous"}
+          </button>
+          <button
+            className="btn btn-primary mx-1 "
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={indexOfLastProduct >= allProducts.length}
+          >
+            <i className="fa-solid fa-circle-arrow-right"></i>
+            {" Next"}
+          </button>
+        </div>
       </div>
       <hr />
     </div>
