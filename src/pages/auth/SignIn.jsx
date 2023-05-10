@@ -80,7 +80,6 @@ export default function Signin() {
                           type="email"
                           id="email"
                           name="email"
-                          value={email}
                           className="form-control form-control-lg"
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -93,7 +92,6 @@ export default function Signin() {
                         <input
                           type="password"
                           id="password"
-                          value={password}
                           name="password"
                           className="form-control form-control-lg"
                           onChange={(e) => setPassword(e.target.value)}
@@ -119,7 +117,7 @@ export default function Signin() {
                           Forgot password?
                         </a>
                         <Link
-                          to="/signup"
+                          to="/register"
                           className=""
                           style={{ color: "#393f81" }}
                         >

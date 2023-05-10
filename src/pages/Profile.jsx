@@ -8,7 +8,7 @@ export default function Profile() {
       <Nav />
 
       <EditProfile />
-      <div className="fixe">
+      <div className="fixe2">
         <Footer />
       </div>
     </>

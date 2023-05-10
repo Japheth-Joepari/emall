@@ -887,3 +887,8 @@ hr {
 .loadImg {
   margin-top: 8rem;
 }
+
+.fixe2 {
+  position: relative;
+  top: 8em;
+}
