@@ -7,6 +7,7 @@ import {
   getAuth,
   updateEmail,
   updateProfile,
+  deleteUser,
 } from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
@@ -95,9 +96,23 @@ export const AuthProvider = ({ children }) => {
       .catch((error) => console.log(error));
   };
 
+  // delete a user
+  const deleteAccount = () => {
+    deleteUser(auth.currentUser)
+      .then(() => {
+        console.log("Account successfully deleted");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   //update profile
   const updateDetails = async () => {
-    const storageRef = ref(storage, "images/mountains.jpg");
+    const storageRef = ref(
+      storage,
+      `images/${authenticatedUser.currentUser.uid}/profile.jpg`
+    );
 
     // Create file metadata including the content type
     const metadata = {
@@ -132,6 +147,7 @@ export const AuthProvider = ({ children }) => {
         name,
         setEmail,
         setProfileImg,
+        deleteAccount,
         SignIn,
         isLoggedIn,
         profileImg,

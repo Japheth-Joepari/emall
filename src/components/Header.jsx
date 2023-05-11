@@ -117,13 +117,13 @@ export default function Nav() {
               </i>
             </a>
             {isLoggedIn ? (
-              <NavLink to="/profile">
+              <Link to="/profile" className={"text-decoration-none"}>
                 <i className="fa-regular fa-user" />
-              </NavLink>
+              </Link>
             ) : (
-              <NavLink to="/login">
+              <Link to="/login" className={"text-decoration-none"}>
                 <i className="fa-regular fa-user" />
-              </NavLink>
+              </Link>
             )}
           </div>
         </div>

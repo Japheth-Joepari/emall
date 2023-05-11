@@ -14,19 +14,11 @@ import { AuthProvider } from "../context/AuthContext";
 import SavedItemsProvider from "../context/SavedItemsContext";
 import SignIn from "../pages/auth/SignIn";
 import SignUp from "../pages/auth/Signup";
-import { useEffect, useState } from "react";
 import loadImage from "../assets/images/ecom.gif";
+import { useLoader } from "../components/loader";
 
 export default function AllRoutes() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1600);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const isLoading = useLoader();
 
   return isLoading ? (
     <div className="d-flex flex-row justify-content-center align-items-center align-content-center loadImg">

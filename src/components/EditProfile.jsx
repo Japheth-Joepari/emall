@@ -1,9 +1,7 @@
 import { useEffect } from "react";
-import { useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import logoImg from "../assets/images/ecom.gif";
 
 export default function EditProfile() {
   const {
@@ -15,13 +13,13 @@ export default function EditProfile() {
     setConfirmPassword,
     profileImg,
     updateDetails,
+    deleteAccount,
     password,
     confirmPassword,
     setEmail,
     setName,
     setProfileImg,
   } = useContext(AuthContext);
-  const [loading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,14 +27,6 @@ export default function EditProfile() {
       navigate("/login");
     }
   }, [isLoggedIn, navigate]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 600);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleSignOut = () => {
     userSignOut();
@@ -53,11 +43,12 @@ export default function EditProfile() {
     }
   };
 
-  return loading ? (
-    <div className="d-flex flex-row justify-content-center align-items-center align-content-center loadImg">
-      <img src={logoImg} alt="" className=" img-fluid " />
-    </div>
-  ) : (
+  const deleteUser = () => {
+    deleteAccount();
+    navigate("/");
+  };
+
+  return (
     <div className="container">
       <div className="row  py-1">
         <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -173,6 +164,7 @@ export default function EditProfile() {
                     <button
                       type="button"
                       id="del"
+                      onClick={deleteUser}
                       name="del"
                       className="btn btn-danger "
                     >
