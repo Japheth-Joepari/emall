@@ -141,7 +141,7 @@ export default function Cart() {
             )} */}
             {!paymentStatus && (
               <PaystackButton
-                text="💸 Pay now"
+                text="💰 Pay now"
                 className="btn btn-primary bigLargeButton w-100"
                 callback={(response) => {
                   console.log(response); // handle response here
@@ -151,9 +151,9 @@ export default function Cart() {
                 disabled={cartItems.length !== 0}
                 embed={false}
                 reference={new Date().getTime()} // replace with a unique reference number
-                email="customer@email.com"
+                email="jeffevurulobi@gmail.com"
                 amount={total * 100} // Paystack accepts amount in kobo (1 naira = 100 kobo)
-                publicKey="pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" // replace with your Paystack public key
+                publicKey="pk_test_b5c06a4f47f6f5f7c8ab27d4e24549778d817fc7" // replace with your Paystack public key
               />
             )}
           </div>
