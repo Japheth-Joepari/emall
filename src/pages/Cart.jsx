@@ -81,8 +81,9 @@ export default function Cart() {
                               </b>
                               <p>
                                 <b className="text-dark">
-                                  {"$"}
-                                  {item.price * item.count}
+                                  {"₦"}
+                                  {Number(item.price) *
+                                    item.count.toLocaleString()}
                                 </b>
                               </p>{" "}
                             </Link>
@@ -126,7 +127,9 @@ export default function Cart() {
           {cartItems != "" && (
             <div className="d-flex">
               <h4>
-                <b className="text-muted">Total: ${total.toFixed(2)}</b>
+                <b className="text-muted">
+                  Total: ₦{total.toFixed(2).toLocaleString()}
+                </b>
               </h4>
             </div>
           )}

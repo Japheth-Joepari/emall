@@ -51,10 +51,18 @@ export default function Product() {
                 </h5>
                 <div className="product-price-variant gap5">
                   <span className="price current-price smallBoldF">
-                    ${product.price}
+                    {"₦"}
+                    {Number(product.price).toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}{" "}
                   </span>
                   <span className="price old-price priceLine">
-                    ${product.oldPrice}
+                    {"₦"}
+                    {Number(product.oldPrice).toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </span>
                 </div>
                 <div className="d-flex flex-row justify-content-start align-items-center gap-2 mt-1">
