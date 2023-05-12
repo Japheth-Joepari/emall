@@ -1,8 +1,10 @@
 import { CartContext } from "../context/CartContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { PaystackButton } from "react-paystack";
 
 export default function Cart() {
+  const [paymentStatus, setPaymentStatus] = useState(false);
   const {
     toggleCart,
     cartItems,
@@ -129,13 +131,30 @@ export default function Cart() {
             </div>
           )}
           <div className="d-flex flex-row">
-            {cartItems != "" ? (
+            {/* {cartItems != "" ? (
               <button className="btn btn-primary  text-white bigLargeButton w-100">
                 <i className="fa fa-check" />
                 checkout <i className="fab fa-amazon-pay" />
               </button>
             ) : (
               ""
+            )} */}
+            {!paymentStatus && (
+              <PaystackButton
+                text="💸 Pay now"
+                className="btn btn-primary bigLargeButton w-100"
+                callback={(response) => {
+                  console.log(response); // handle response here
+                  setPaymentStatus(true); // set payment status to true after successful payment
+                }}
+                close={() => console.log("Payment closed")}
+                disabled={cartItems.length !== 0}
+                embed={false}
+                reference={new Date().getTime()} // replace with a unique reference number
+                email="customer@email.com"
+                amount={total * 100} // Paystack accepts amount in kobo (1 naira = 100 kobo)
+                publicKey="pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" // replace with your Paystack public key
+              />
             )}
           </div>
         </div>

@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import Nav from "../components/Header";
 import logoImg from "../assets/images/ecom.gif";
 import { useLoader } from "../components/loader";
+import { ToastContainer } from "react-bootstrap";
 
 export default function Profile() {
   const loading = useLoader();
@@ -15,6 +16,7 @@ export default function Profile() {
     </>
   ) : (
     <>
+      <ToastContainer />
       <Nav />
 
       <EditProfile />

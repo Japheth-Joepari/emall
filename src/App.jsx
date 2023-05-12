@@ -6,17 +6,21 @@ import { SortProvider } from "./context/Sort";
 import { AuthProvider } from "./context/AuthContext";
 import SavedItemsProvider from "./context/SavedItemsContext";
 import AllRoutes from "./routes/routes";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
-    <SortProvider>
-      <CartProvider>
-        <SavedItemsProvider>
-          <AuthProvider>
-            <AllRoutes />
-          </AuthProvider>
-        </SavedItemsProvider>
-      </CartProvider>
-    </SortProvider>
+    <>
+      <ToastContainer />
+      <SortProvider>
+        <CartProvider>
+          <SavedItemsProvider>
+            <AuthProvider>
+              <AllRoutes />
+            </AuthProvider>
+          </SavedItemsProvider>
+        </CartProvider>
+      </SortProvider>
+    </>
   );
 }

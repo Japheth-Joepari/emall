@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/storage/firebase";
 import { createUserWithEmailAndPassword, updatePassword } from "firebase/auth";
+
 import {
   signInWithEmailAndPassword,
   getAuth,
@@ -10,6 +11,7 @@ import {
   deleteUser,
 } from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
@@ -25,6 +27,7 @@ export const AuthProvider = ({ children }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [authUser, setAuthUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
   const storage = getStorage();
 
   //   check if user is authenticated
@@ -33,7 +36,6 @@ export const AuthProvider = ({ children }) => {
       if (user) {
         setAuthUser(user);
         setIsLoggedIn(true);
-        console.log(authUser);
         user.providerData.forEach((profile) => {
           if (profile.displayName != null) {
             setName(profile.displayName);
@@ -59,15 +61,15 @@ export const AuthProvider = ({ children }) => {
   //   SignIn
   const SignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
+      .then(() => {
+        toast.success("Log in successfull");
         setIsLoggedIn(true);
         setEmail("");
         setPassword("");
       })
       .catch((error) => {
         setIsLoggedIn(false);
-        console.log(error);
+        toast.error("Invalid username or passsword");
       });
   };
 
@@ -75,8 +77,8 @@ export const AuthProvider = ({ children }) => {
   const SignUp = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
+      .then(() => {
+        toast.success("Account succesfully created");
         setEmail("");
         setPassword("");
       })
@@ -89,21 +91,19 @@ export const AuthProvider = ({ children }) => {
   const userSignOut = () => {
     signOut(auth)
       .then(() => {
-        console.log("Signout successfull");
-        setEmail("");
-        setPassword("");
+        toast.success("Sign out successfull");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error("unable to sign out"));
   };
 
   // delete a user
   const deleteAccount = () => {
     deleteUser(auth.currentUser)
       .then(() => {
-        console.log("Account successfully deleted");
+        toast.success("Account successfully deleted");
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("Unable to delete account");
       });
   };
 
@@ -120,10 +120,12 @@ export const AuthProvider = ({ children }) => {
     };
 
     try {
+      setLoading(true); // set loading state to true
+      toast.loading("updating details ⌛...");
+
       // Upload the file and metadata
       await uploadBytes(storageRef, profileImg, metadata);
       const profilePhotoURL = await getDownloadURL(storageRef);
-      console.log(profilePhotoURL);
 
       await updateProfile(authenticatedUser.currentUser, {
         displayName: name,
@@ -131,12 +133,19 @@ export const AuthProvider = ({ children }) => {
       });
 
       await updatePassword(authenticatedUser.currentUser, password);
-      console.log("password updated successfully");
 
       await updateEmail(auth.currentUser, email);
-      console.log("Profile and email updated successfully");
+      setLoading(false);
+      toast.dismiss();
+      toast.success("Profile updated successfully"); // update toast to success state
+      setEmail("");
+      setName("");
+      setPassword("");
+      setConfirmPassword("");
     } catch (error) {
       console.log(error);
+      toast.dismiss();
+      toast.error("Pls login again to update ...");
     }
   };
 
@@ -144,8 +153,8 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         setName,
+        loading,
         name,
-        setEmail,
         setProfileImg,
         deleteAccount,
         SignIn,

@@ -2,12 +2,15 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function EditProfile() {
   const {
     userSignOut,
     isLoggedIn,
     email,
+    loading,
     name,
     setPassword,
     setConfirmPassword,
@@ -50,6 +53,7 @@ export default function EditProfile() {
 
   return (
     <div className="container">
+      <ToastContainer />
       <div className="row  py-1">
         <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
           <div className="card  border-0 shadow m-3">
@@ -157,6 +161,7 @@ export default function EditProfile() {
                       id="submit"
                       type="submit"
                       name="submit"
+                      disabled={loading}
                       className="btn btn-primary"
                     >
                       Update
