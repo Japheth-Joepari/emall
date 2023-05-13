@@ -2,12 +2,23 @@ import logo from "../../assets/images/logos.jpg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 export default function SignUp() {
-  const { email, password, SignUp, setEmail, setPassword } =
+  const { email, password, signInWithGoogle, SignUp, setEmail, setPassword } =
     useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const registerUser = (e) => {
+    e.preventDefault();
+    SignUp();
+    navigate("/");
+  };
+
   return (
     <section className="vh-100 bbg">
+      <ToastContainer />
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-10">
@@ -26,7 +37,7 @@ export default function SignUp() {
                 </div>
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-5 text-black">
-                    <form onSubmit={SignUp}>
+                    <form onSubmit={(e) => registerUser(e)}>
                       <Link
                         to={"/"}
                         className="text-decoration-none text-black d-flex align-items-center mb-3 pb-1"
@@ -51,6 +62,7 @@ export default function SignUp() {
                           id="email"
                           name="email"
                           value={email}
+                          required
                           className="form-control form-control-lg"
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -63,6 +75,7 @@ export default function SignUp() {
                         <input
                           type="password"
                           id="password"
+                          required
                           value={password}
                           name="password"
                           className="form-control form-control-lg"
@@ -79,15 +92,15 @@ export default function SignUp() {
                       </div>
                       <button
                         className="btn btn-outline-primary btn-lg w-100 btn-block"
-                        type="submit"
+                        onClick={signInWithGoogle}
                       >
                         <i className="fab fa-google"></i>
                         {"  Sign Up using Google"}
                       </button>
                       <div className="d-flex p-2 justify-content-between">
-                        <a className="small text-muted" href="#!">
+                        <Link to="/reset" className="small text-muted">
                           Forgot password?
-                        </a>
+                        </Link>
                         <Link
                           to="/login"
                           className="text-decoration-none text-muted"

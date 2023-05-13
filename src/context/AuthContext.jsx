@@ -1,7 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/storage/firebase";
-import { createUserWithEmailAndPassword, updatePassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updatePassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 
 import {
   signInWithEmailAndPassword,
@@ -9,8 +13,16 @@ import {
   updateEmail,
   updateProfile,
   deleteUser,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  connectStorageEmulator,
+} from "firebase/storage";
 import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
@@ -58,6 +70,25 @@ export const AuthProvider = ({ children }) => {
     return () => listen();
   }, []);
 
+  // Sign in with Google
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        // ...
+      })
+      .catch((error) => {
+        console.log(error);
+        // ...
+      });
+  };
+
+  // send password reset email
+  const sendResetEmail = async () => {
+    await sendPasswordResetEmail(auth, email);
+  };
+
   //   SignIn
   const SignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
@@ -75,7 +106,6 @@ export const AuthProvider = ({ children }) => {
 
   //   SignUp
   const SignUp = (e) => {
-    e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         toast.success("Account succesfully created");
@@ -84,6 +114,7 @@ export const AuthProvider = ({ children }) => {
       })
       .catch((error) => {
         console.log(error);
+        toast.error("unable to create account");
       });
   };
 
@@ -154,6 +185,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         setName,
         loading,
+        sendResetEmail,
         name,
         setProfileImg,
         deleteAccount,
@@ -169,7 +201,9 @@ export const AuthProvider = ({ children }) => {
         confirmPassword,
         setConfirmPassword,
         setPassword,
+        authenticatedUser,
         userSignOut,
+        signInWithGoogle,
       }}
     >
       {children}

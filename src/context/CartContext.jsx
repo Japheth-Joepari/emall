@@ -36,6 +36,13 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
+  // wipe cart
+  const wipeCart = () => {
+    setCartItems([]);
+    const updatedCartItems = []; // Create an empty array
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  };
+
   // remove from cart
   const removeFromCart = (id) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== id);
@@ -53,6 +60,7 @@ export const CartProvider = ({ children }) => {
       return item;
     });
     setCartItems(updatedCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
   // decrease count
@@ -66,6 +74,7 @@ export const CartProvider = ({ children }) => {
       })
       .filter((item) => item.count > 0);
     setCartItems(updatedCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
   // toggle cart functionality
@@ -87,11 +96,13 @@ export const CartProvider = ({ children }) => {
     isOpen,
     toggleCart,
     addToCart,
+    setCartItems,
     removeFromCart,
     decreaseCount,
     increaseCount,
     cartItemCount,
     total,
+    wipeCart,
   };
 
   return (

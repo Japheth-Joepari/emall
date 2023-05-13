@@ -1,8 +1,29 @@
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 export default function Review({ rating }) {
+  const { isLoggedIn } = useContext(AuthContext);
+  const [review, setReview] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isLoggedIn) {
+      review.length >= 5
+        ? (toast.success("Your rating is in review ..."), setReview(""))
+        : toast.warn("Ratings must be more than 5 characters");
+    } else {
+      toast.error("Login to leave a review");
+      navigate("/login");
+    }
+  };
+
   return (
     <div className="container">
       <div className="row ">
-        <div className="col-md-6 my-2">
+        <form onSubmit={(e) => handleSubmit(e)} className="col-md-6 my-2">
           <h2>
             <b>Leave a Rating</b>
           </h2>
@@ -105,20 +126,21 @@ export default function Review({ rating }) {
             ></p>
           </div>
 
-          <form action="#" className=" py-2 my-2">
+          <div className=" py-2 my-2">
             <textarea
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
               className="form-control"
               cols={30}
               rows={4}
               placeholder="Type a review"
-              defaultValue={""}
             />
             <br />
             <button className="btn btn-primary ">
               <i className="fa fa-check" /> Submit Rating
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
         <div className="col-md-6 my-2">
           <h2>
             <b> Ratings</b>

@@ -1,10 +1,13 @@
 import { CartContext } from "../context/CartContext";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PaystackButton } from "react-paystack";
+import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 export default function Cart() {
-  const [paymentStatus, setPaymentStatus] = useState(false);
+  const { email, isLoggedIn, authenticatedUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     toggleCart,
     cartItems,
@@ -12,7 +15,30 @@ export default function Cart() {
     decreaseCount,
     increaseCount,
     total,
+    wipeCart,
   } = useContext(CartContext);
+
+  const setCart = () => {
+    wipeCart();
+  };
+
+  const componentProps = {
+    email: email,
+    amount: total * 100,
+    metadata: {
+      name: isLoggedIn ? authenticatedUser.currentUser.name : "",
+      phone: isLoggedIn ? authenticatedUser.currentUser.phone : "",
+    },
+    publicKey: "pk_test_b5c06a4f47f6f5f7c8ab27d4e24549778d817fc7",
+    text: "Pay now 💵",
+    onSuccess: () => {
+      toast.success("Thanks for doing business with us! Come back soon!!");
+      setCart(); // Corrected: Added parentheses to invoke the function
+    },
+    reference: new Date().getTime(),
+    embed: false,
+    disabled: cartItems.length !== 0,
+  };
 
   return (
     <div>
@@ -56,9 +82,12 @@ export default function Cart() {
                       <div className="col-9 d-flex flex-lg-row flex-md-row flex-sm-row  justify-content-lg-around justify-content-start">
                         <div className="col-8">
                           <div className="card-body d-flex flex-column gap-2 mx-3">
-                            <h5 className="card-title smText">
+                            <Link
+                              to={`/product/${item.id}`}
+                              className="card-title smText text-dark text-decoration-none h5"
+                            >
                               <b>{item.title}</b> {/* insert item title here */}
-                            </h5>
+                            </Link>
                             <Link
                               to={`/product/${item.id}`}
                               className="rating-icon card-text ratingColor d-flex text-decoration-none"
@@ -83,7 +112,10 @@ export default function Cart() {
                                 <b className="text-dark">
                                   {"₦"}
                                   {Number(item.price) *
-                                    item.count.toLocaleString()}
+                                    item.count.toLocaleString("en-US", {
+                                      minimumFractionDigits: 2,
+                                      maximumFractionDigits: 2,
+                                    })}
                                 </b>
                               </p>{" "}
                             </Link>
@@ -124,42 +156,36 @@ export default function Cart() {
           </div>
 
           <hr />
-          {cartItems != "" && (
-            <div className="d-flex">
-              <h4>
-                <b className="text-muted">
-                  Total: ₦{total.toFixed(2).toLocaleString()}
-                </b>
-              </h4>
+          {total > 0 && (
+            <div>
+              {cartItems !== "" && (
+                <div className="d-flex">
+                  <h4>
+                    <b className="text-muted">
+                      Total: &#8358;
+                      {Number(total).toFixed(2).toLocaleString("en-NG")}
+                    </b>
+                  </h4>
+                </div>
+              )}
+
+              <div className="d-flex flex-row">
+                {isLoggedIn ? (
+                  <PaystackButton
+                    {...componentProps}
+                    className="btn btn-primary bigLargeButton w-100"
+                  />
+                ) : (
+                  <button
+                    onClick={() => navigate("/login")}
+                    className="btn btn-primary bigLargeButton w-100"
+                  >
+                    Login to make payment 💵
+                  </button>
+                )}
+              </div>
             </div>
           )}
-          <div className="d-flex flex-row">
-            {/* {cartItems != "" ? (
-              <button className="btn btn-primary  text-white bigLargeButton w-100">
-                <i className="fa fa-check" />
-                checkout <i className="fab fa-amazon-pay" />
-              </button>
-            ) : (
-              ""
-            )} */}
-            {!paymentStatus && (
-              <PaystackButton
-                text="💰 Pay now"
-                className="btn btn-primary bigLargeButton w-100"
-                callback={(response) => {
-                  console.log(response); // handle response here
-                  setPaymentStatus(true); // set payment status to true after successful payment
-                }}
-                close={() => console.log("Payment closed")}
-                disabled={cartItems.length !== 0}
-                embed={false}
-                reference={new Date().getTime()} // replace with a unique reference number
-                email="jeffevurulobi@gmail.com"
-                amount={total * 100} // Paystack accepts amount in kobo (1 naira = 100 kobo)
-                publicKey="pk_test_b5c06a4f47f6f5f7c8ab27d4e24549778d817fc7" // replace with your Paystack public key
-              />
-            )}
-          </div>
         </div>
       </div>
     </div>

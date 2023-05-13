@@ -83,7 +83,7 @@ export default function Banner() {
                   <b>From</b>
                 </span>
                 <span className="">
-                  <b>${item.price}</b>
+                  <b>₦{Number(item.price).toLocaleString()}</b>
                 </span>
               </div>
             </Link>

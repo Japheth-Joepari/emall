@@ -7,7 +7,7 @@ import Loading from "../../assets/images/ecom.gif";
 export default function Signin() {
   const navigate = useNavigate();
 
-  const { isLoggedIn, email, password, SignIn, setEmail, setPassword } =
+  const { isLoggedIn, signInWithGoogle, SignIn, setEmail, setPassword } =
     useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -80,6 +80,7 @@ export default function Signin() {
                           type="email"
                           id="email"
                           name="email"
+                          required
                           className="form-control form-control-lg"
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -93,6 +94,7 @@ export default function Signin() {
                           type="password"
                           id="password"
                           name="password"
+                          required
                           className="form-control form-control-lg"
                           onChange={(e) => setPassword(e.target.value)}
                         />
@@ -106,6 +108,7 @@ export default function Signin() {
                         </button>
                       </div>
                       <button
+                        onClick={signInWithGoogle}
                         className="btn btn-outline-primary btn-lg w-100 btn-block"
                         type="button"
                       >
@@ -113,9 +116,10 @@ export default function Signin() {
                         {"  Sign in using Google"}
                       </button>
                       <div className="d-flex p-2 justify-content-between">
-                        <a className="small text-muted" href="#!">
+                        <Link to="/reset" className="small text-muted">
                           Forgot password?
-                        </a>
+                        </Link>
+
                         <Link
                           to="/register"
                           className=""

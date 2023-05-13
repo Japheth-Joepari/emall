@@ -16,6 +16,7 @@ import SignIn from "../pages/auth/SignIn";
 import SignUp from "../pages/auth/Signup";
 import loadImage from "../assets/images/ecom.gif";
 import { useLoader } from "../components/loader";
+import ForgotPassword from "../pages/auth/Forgotpassword";
 
 export default function AllRoutes() {
   const isLoading = useLoader();
@@ -42,6 +43,7 @@ export default function AllRoutes() {
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/login" element={<SignIn />} />
                 <Route path="/register" element={<SignUp />} />
+                <Route path="/reset" element={<ForgotPassword />} />
               </Routes>
             </AuthProvider>
           </SavedItemsProvider>
