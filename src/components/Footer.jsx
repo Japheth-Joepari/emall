@@ -10,21 +10,43 @@ export default function Footer() {
         className="d-flex py-4 flex-lg-row flex-md-column justify-content-lg-evenly 
 justify-content-md-center justify-content-sm-center flex-sm-column flex-column text-center align-items-center"
       >
-        <ul className="d-flex gap-3 list-unstyled">
+        <ul className="d-flex gap-3 list-unstyled ">
           <li>
-            <i className="fa-brands fa-facebook-f" />
+            <a
+              className="text-decoration-none text-dark fa-brands fa-facebook-f"
+              href="https://web.facebook.com/japhethjoepari"
+            >
+              {" "}
+            </a>
+          </li>
+          {/* <li>
+            <a className="text-decoration-none text-dark fa-brands fa-instagram">
+              {" "}
+            </a>
+          </li> */}
+          <li>
+            <a
+              className="text-decoration-none text-dark fa-brands fa-twitter"
+              href="https://twitter.com/Joepari_Codes"
+            >
+              {" "}
+            </a>
           </li>
           <li>
-            <i className="fa-brands fa-instagram" />
+            <a
+              className="text-decoration-none text-dark fa-brands fa-linkedin"
+              href="https://www.linkedin.com/in/japheth-joepari/"
+            >
+              {" "}
+            </a>
           </li>
           <li>
-            <i className="fa-brands fa-twitter" />
-          </li>
-          <li>
-            <i className="fa-brands fa-linkedin" />
-          </li>
-          <li>
-            <i className="fa fa-link" />
+            <a
+              className="fa fa-link text-decoration-none text-dark"
+              href="https://japheth-joepari.github.io/"
+            >
+              {" "}
+            </a>
           </li>
         </ul>
         <div>
