@@ -18,6 +18,11 @@ export default function Cart() {
     wipeCart,
   } = useContext(CartContext);
 
+  const convertNumber = (price, count) => {
+    const totalPrice = price * count;
+    return totalPrice.toLocaleString("en-NG");
+  };
+
   const setCart = () => {
     wipeCart();
   };
@@ -111,9 +116,7 @@ export default function Cart() {
                               <p>
                                 <b className="text-dark">
                                   {"₦"}
-                                  {Number(item.price).toLocaleString(
-                                    "en-NG"
-                                  )}{" "}
+                                  {convertNumber(item.price, item.count)}{" "}
                                 </b>
                               </p>{" "}
                             </Link>
