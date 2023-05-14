@@ -1,9 +1,15 @@
 import Footer from "../components/Footer";
 import Nav from "../components/Header";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function ContactUs() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Message received successfully, Thanks for reaching out");
+  };
   return (
     <div className="">
+      <ToastContainer />
       <Nav />
 
       <section className="container py-3 my-2">
@@ -18,21 +24,22 @@ export default function ContactUs() {
                   <h3>
                     <i className="fa fa-envelope" /> Write to us:
                   </h3>
-                  <p className="m-0">
-                    We’ll write rarely, but only the best content.
-                  </p>
+                  <p className="m-0">We’ll reply as soon as posible</p>
                 </div>
               </div>
-              <form className="card-body p-3 d-flex flex-column gap-2">
+              <form
+                className="card-body p-3 d-flex flex-column gap-2"
+                onSubmit={(e) => handleSubmit(e)}
+              >
                 <div className="form-group">
-                  <label> Your name </label>
+                  <label> Full name </label>
                   <div className="input-group">
                     <input
-                      defaultValue
                       type="text"
-                      name="data[name]"
+                      name="name"
                       className="form-control"
-                      id="inlineFormInputGroupUsername"
+                      required
+                      id="name"
                       placeholder="Your name"
                     />
                   </div>
@@ -42,10 +49,10 @@ export default function ContactUs() {
                   <div className="input-group mb-2 mb-sm-0">
                     <input
                       type="email"
-                      defaultValue
-                      name="data[email]"
+                      required
+                      name="email"
                       className="form-control"
-                      id="inlineFormInputGroupUsername"
+                      id="email"
                       placeholder="Email"
                     />
                   </div>
@@ -55,9 +62,10 @@ export default function ContactUs() {
                   <div className="input-group mb-2 mb-sm-0">
                     <input
                       type="text"
-                      name="data[subject]"
+                      required
+                      name="subject"
                       className="form-control"
-                      id="inlineFormInputGroupUsername"
+                      id="subject"
                       placeholder="Subject"
                     />
                   </div>
@@ -65,11 +73,17 @@ export default function ContactUs() {
                 <div className="form-group">
                   <label>Message</label>
                   <div className="input-group mb-2 mb-sm-0">
-                    <input type="text" className="form-control" name="mesg" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="mesg"
+                      placeholder="Message"
+                      required
+                    />
                   </div>
                 </div>
                 <div className="">
-                  <button className="btn btn-primary">
+                  <button className="btn btn-primary" type="submit">
                     <i className="fa fa-paper-plane"></i> send
                   </button>
                 </div>
