@@ -14,10 +14,6 @@ export default function Nav() {
 
   const { isLoggedIn } = useContext(AuthContext);
 
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, [isLoggedIn]);
-
   return (
     <nav className="navbar navbar-expand-md bg-body-tetiary sticky-top">
       <div className="container-fluid navb py-2 my-2 nv shadow-sm rounded bg-white">

@@ -1,4 +1,5 @@
 import { categories } from "../utils/data/categories";
+import { Link } from "react-router-dom";
 
 export default function Categories() {
   return (
@@ -14,9 +15,9 @@ export default function Categories() {
       </h4>
       <div className="row justify-content-evenly">
         {categories.map((category) => (
-          <a
+          <Link
             key={category.id}
-            href={`/products?category=${category.title}`}
+            to={`/sort/${category.title}`}
             className="text-center cursor-pointer text-decoration-none custom-col col-6 col-sm-6 col-xm-6 col-md-4 col-lg-2 py-2 my-2"
           >
             <div className="card d-flex flex-column border-0 shadow-sm">
@@ -25,7 +26,7 @@ export default function Categories() {
                 <p className="text-dark text-center">{category.title}</p>
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

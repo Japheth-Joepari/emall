@@ -34,12 +34,18 @@ export default function AllRoutes() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/products" element={<Products />} />
+                <Route
+                  path="/sort/:category"
+                  element={<Products />}
+                  props={true}
+                />
+
+                {/* Add this route */}
                 <Route path="/profile" element={<Profile />} />
                 {/* <Route path="/profile" element={<Profile />} /> */}
                 <Route path="/contact" element={<ContactUs />} />
                 <Route path="/details" element={<Detail />} props={true} />
                 <Route path="/product/:id" element={<Detail />} props={true} />
-
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/login" element={<SignIn />} />
                 <Route path="/register" element={<SignUp />} />

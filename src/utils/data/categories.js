@@ -38,7 +38,7 @@ export const categories = [
 
   {
     id: 6,
-    title: "Gaming",
+    title: "gaming",
     image: gamming,
   },
 ];

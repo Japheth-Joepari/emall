@@ -3,7 +3,10 @@ import Nav from "../components/Header";
 import NewsLetter from "../components/Newsletter";
 import ProductListngs from "../components/ProductListings";
 import Sort from "../components/Sort";
+
 export default function Products() {
+  // Rest of the code
+
   return (
     <div>
       <div className="">
