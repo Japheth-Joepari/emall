@@ -42,7 +42,7 @@ export default function Sort() {
             value={categoryValue}
             onChange={(e) => setCategoryValue(e.target.value)}
           >
-            <option value="">Choose Category</option>
+            <option value="">All</option>
             <option value="phones">Phones</option>
             <option value="laptops">Laptops</option>
             <option value="networking">Networking</option>

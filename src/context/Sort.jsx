@@ -10,6 +10,7 @@ export const SortProvider = ({ children }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
+    // setFilteredProducts([]);
     let sortedProducts = [...products];
 
     if (categoryValue) {
@@ -50,6 +51,7 @@ export const SortProvider = ({ children }) => {
     updateSearchText,
     setSortValue,
     categoryValue,
+    setFilteredProducts,
     setCategoryValue,
   };
 
