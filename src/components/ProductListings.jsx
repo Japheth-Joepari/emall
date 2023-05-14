@@ -63,17 +63,11 @@ export default function ProductListngs() {
                 <div className="product-price-variant gap5">
                   <span className="price current-price smallBoldF">
                     {"₦"}
-                    {Number(product.price).toLocaleString("en-US", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}{" "}
+                    {Number(product.price).toLocaleString("en-NG")}{" "}
                   </span>
                   <span className="price old-price priceLine">
                     {"₦"}
-                    {Number(product.oldPrice).toLocaleString("en-US", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
+                    {Number(product.oldPrice).toLocaleString("en-NG")}{" "}
                   </span>
                 </div>
 

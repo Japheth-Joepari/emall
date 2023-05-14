@@ -4,16 +4,38 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { useEffect } from "react";
 
 export default function SignUp() {
-  const { email, password, signInWithGoogle, SignUp, setEmail, setPassword } =
-    useContext(AuthContext);
+  const {
+    email,
+    password,
+    signInWithGoogle,
+    SignUp,
+    setEmail,
+    setPassword,
+    isLoggedIn,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      // console.log(isLoggedIn);
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
 
   const registerUser = (e) => {
     e.preventDefault();
     SignUp();
     navigate("/");
+  };
+
+  const googleSignIn = () => {
+    signInWithGoogle();
+    if (isLoggedIn) {
+      navigate("/");
+    }
   };
 
   return (
@@ -92,7 +114,7 @@ export default function SignUp() {
                       </div>
                       <button
                         className="btn btn-outline-primary btn-lg w-100 btn-block"
-                        onClick={signInWithGoogle}
+                        onClick={googleSignIn}
                       >
                         <i className="fab fa-google"></i>
                         {"  Sign Up using Google"}

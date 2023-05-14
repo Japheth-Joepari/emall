@@ -1,11 +1,17 @@
+import { ToastContainer, toast } from "react-toastify";
 export default function NewsLetter() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Subcription successful. We'll keep in touch");
+  };
+  <ToastContainer />;
   return (
     <div className="container">
       <section className="home-newsletter bordered">
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
-              <div className="single">
+              <form onSubmit={(e) => handleSubmit(e)} className="single">
                 <h2>Subscribe to our Newsletter</h2>
                 <div className="input-group">
                   <input
@@ -19,7 +25,7 @@ export default function NewsLetter() {
                     </button>
                   </span>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

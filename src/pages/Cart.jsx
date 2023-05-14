@@ -111,11 +111,9 @@ export default function Cart() {
                               <p>
                                 <b className="text-dark">
                                   {"₦"}
-                                  {Number(item.price) *
-                                    item.count.toLocaleString("en-US", {
-                                      minimumFractionDigits: 2,
-                                      maximumFractionDigits: 2,
-                                    })}
+                                  {Number(item.price).toLocaleString(
+                                    "en-NG"
+                                  )}{" "}
                                 </b>
                               </p>{" "}
                             </Link>
@@ -163,7 +161,8 @@ export default function Cart() {
                   <h4>
                     <b className="text-muted">
                       Total: &#8358;
-                      {Number(total).toFixed(2).toLocaleString("en-NG")}
+                      {/* {Number(total).toFixed(2).toLocaleString("en-NG")} */}
+                      {Number(total).toLocaleString("en-NG")}{" "}
                     </b>
                   </h4>
                 </div>

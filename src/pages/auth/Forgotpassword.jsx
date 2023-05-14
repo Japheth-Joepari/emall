@@ -3,11 +3,20 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function ForgotPassword() {
-  const { email, setEmail, sendResetEmail } = useContext(AuthContext);
+  const { email, setEmail, sendResetEmail, isLoggedIn } =
+    useContext(AuthContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      // console.log(isLoggedIn);
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
 
   const resetPassword = (e) => {
     e.preventDefault();

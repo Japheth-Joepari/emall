@@ -76,11 +76,11 @@ export const AuthProvider = ({ children }) => {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
-        // ...
+        toast.success("Sign in successful ");
       })
       .catch((error) => {
         console.log(error);
-        // ...
+        toast.error("Can't sign you in redirecting");
       });
   };
 
@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }) => {
   const SignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        toast.success("Log in successfull");
+        toast.success("Log in successful");
         setIsLoggedIn(true);
         setEmail("");
         setPassword("");
@@ -122,7 +122,7 @@ export const AuthProvider = ({ children }) => {
   const userSignOut = () => {
     signOut(auth)
       .then(() => {
-        toast.success("Sign out successfull");
+        toast.success("Sign out successful");
       })
       .catch((error) => toast.error("unable to sign out"));
   };

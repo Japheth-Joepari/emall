@@ -31,6 +31,13 @@ export default function Signin() {
     SignIn();
   };
 
+  const googleSignIn = () => {
+    signInWithGoogle();
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  };
+
   return isLoading ? (
     <div className="d-flex flex-row justify-content-center align-items-center align-content-center loadImg">
       <img src={Loading} alt="" className=" img-fluid " />
@@ -108,7 +115,7 @@ export default function Signin() {
                         </button>
                       </div>
                       <button
-                        onClick={signInWithGoogle}
+                        onClick={googleSignIn}
                         className="btn btn-outline-primary btn-lg w-100 btn-block"
                         type="button"
                       >

@@ -9,7 +9,6 @@ import { products } from "../utils/data/products";
 const feature = products.filter((product) => {
   return product.id == 0;
 });
-console.log(feature);
 export default function Banner() {
   return (
     <div className="container-fluid banner-container mb-5 my-5 inc">

@@ -35,7 +35,7 @@ export default function Detail() {
               </h1>
               <h5 className="col-lg-6">
                 <b className="text-dark">
-                  ${Number(product.price).toLocaleString("en-NG")}
+                  ₦{Number(product.price).toLocaleString("en-NG")}
                 </b>
               </h5>
 
