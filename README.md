@@ -1,10 +1,10 @@
 # emall
 Complete Ecommerce Store Built using Reactjs and Firebase
+![FireShot Capture 005 - emall - emall vercel app](https://github.com/Japheth-Joepari/emall/assets/51114866/3e508515-775d-4042-8126-8f61b02f6668)
+
 ## Screens Include:
 Checkout the live version Here:
 https://emall.vercel.app/#
-![myecom](https://github.com/Japheth-Joepari/emall/assets/51114866/e7ad647e-9660-4ef6-9eeb-58e3ffc6eef8)
-
 
 - HomePage
 - Login
